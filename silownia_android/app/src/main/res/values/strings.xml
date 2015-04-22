@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Silownia_android</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="hint_login">Login</string>
+    <string name="hint_password">Hasło</string>
+    <string name="hint_name">Imię</string>
+    <string name="btn_login">ZALOGUJ</string>
+    <string name="btn_register">ZAREJESTRUJ</string>
+    <string name="btn_link_to_register">Nie masz jeszcze konta? Zarejestruj się!</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">WYLOGUJ</string>
+    <string name="name">Imię</string>
+
+
+</resources>
