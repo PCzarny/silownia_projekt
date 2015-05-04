@@ -18,10 +18,11 @@
     <string name="btn_login">ZALOGUJ</string>
     <string name="btn_register">ZAREJESTRUJ</string>
     <string name="btn_link_to_register">Nie masz jeszcze konta? Zarejestruj się!</string>
-    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="btn_link_to_login">Masz już konto? Zaloguj się!</string>
     <string name="welcome">Welcome</string>
     <string name="btn_logout">WYLOGUJ</string>
     <string name="name">Imię</string>
+    <string name="hint_email">E-mail</string>
 
 
 </resources>
