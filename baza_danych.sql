@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+﻿-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: silownia
 -- ------------------------------------------------------
@@ -552,8 +552,8 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `USER_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NAME` varchar(45) NOT NULL,
-  `SURNAME` varchar(45) NOT NULL,
+  `NAME` varchar(45),
+  `SURNAME` varchar(45),
   `LOGIN` varchar(45) NOT NULL,
   `PASSWORD` varchar(45) NOT NULL,
   `EMAIL` varchar(45) NOT NULL,
