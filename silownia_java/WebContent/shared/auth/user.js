@@ -1,10 +1,10 @@
 ﻿(function() {
 	"use strict";
 	angular.module('gym.auth')
-		.service('UserService', function ($http) {
+		.factory('UserService', function ($http) {
 			var service = {};
 			var user = {
-				organizationId: 1,
+				id: 1,
 				username: 'user'
 			};
 

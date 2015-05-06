@@ -21,12 +21,22 @@
 				password: $('#input-password').val()
 			};
 
-			AuthService.login(credentials).then(function (user) {
-				UserService.setUser(user);
-				$rootScope.$broadcast('SetUser');
-				$location.url('/home');
-			}, function () {
-				$scope.errorMessage = false;
+			AuthService.login(credentials).then(function (data) {
+				console.log(data);
+				if ( data.status == true){
+					var user = {
+							id : 1,
+							username: credentials.username
+						}
+					UserService.setUser(user);
+					$rootScope.$broadcast('SetUser');
+					$location.url('/home');
+					console.log('Poprawnie zalogowano: ' + user.username);
+				}
+				else{
+					$scope.errorMessage = false;
+					console.log('niepoprawne logowanie');
+				}	
 			});
 		});
 	}
