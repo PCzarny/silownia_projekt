@@ -11,7 +11,7 @@ public class Login {
     // HTTP Get Method
     @GET
     // Path: http://localhost/<appln-folder-name>/login/dologin
-    @Path("/dologin")
+    @Path("/authenticate")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
     // Query parameters are parameters: http://localhost/<appln-folder-name>/login/dologin?username=abc&password=xyz

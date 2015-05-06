@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<title>Gym Challange Project</title>
+		<meta content='Piotr Czarny' name='author'>
+		<meta charset="UTF-8">
+		
+	<!-- BEGIN LIB CSS-->
+	    <link href="libs/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<!-- END LIB CSS -->
+	
+	<!-- BEGIN CUSTOM CSS -->
+	    <link href="style/custom.css" rel="stylesheet" type="text/css" />
+	<!-- END CUSTOM CSS -->
+	
+	</head>
+	<body ng-app='gym.project'>
+		
+	<!-- BEGIN PAGE CONTENT -->
+    	<div data-ng-view=''></div>
+	<!-- END PAGE CONTENT -->
+		
+	<!-- BEGIN LIB JS -->
+		<script src='libs/jquery-1.8.3.min.js'></script>
+		<script src='libs/angular.js'></script>
+		<script src='libs/boostrapv3/js/bootstrap.min.js'></script>
+		<script src='libs/angular-route.min.js'></script>
+	<!-- END LIB JS -->
+	
+	<!-- BEGIN CUSTOM JS -->
+		<script src='app.js'></script>
+		<script src='views/login/login.js'></script>
+
+		<script src='shared/auth/auth.module.js'></script>
+		<script src='shared/auth/user.js'></script>
+		<script src='shared/auth/auth-service.js'></script>
+	<!-- END CUSTOM JS -->
+	</body>
+</html> 
