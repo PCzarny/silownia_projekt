@@ -11,8 +11,8 @@
 		.controller('LoginController', LoginController);
 
 	LoginController.$inject = ['$scope', '$rootScope', 'AuthService', 'UserService', '$location'];
-	function LoginController($scope, $rootScope, AuthService, UserService, $location) {
-		$scope.errorMessage = true;
+	function LoginController($scope, $rootScope, AuthService, UserService, $location) {zd
+		$scope.errorMessage = false;
 		UserService.setUser(undefined);
 
 		$('#submit-button').on('click', function () {
@@ -34,7 +34,8 @@
 					console.log('Poprawnie zalogowano: ' + user.username);
 				}
 				else{
-					$scope.errorMessage = false;
+					$scope.errorMessage = true;
+					$
 					console.log('niepoprawne logowanie');
 				}	
 			});
