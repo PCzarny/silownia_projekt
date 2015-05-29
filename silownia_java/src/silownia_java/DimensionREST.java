@@ -16,7 +16,7 @@ public class DimensionREST {
 
 	 // HTTP Get Method
     @GET
-    // Path: http://localhost/<appln-folder-name>/login/dologin
+    // Path: http://localhost:8080/silownia_java/rest/dimension/allDimension?userId=1&dimensionId=1
     @Path("/lastDimension")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
@@ -31,7 +31,7 @@ public class DimensionREST {
     
     // HTTP Get Method
     @GET
-    // Path: http://localhost/<appln-folder-name>/login/dologin
+    // Path: 
     @Path("/allDimension")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
