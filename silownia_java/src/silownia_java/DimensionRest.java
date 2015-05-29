@@ -8,29 +8,25 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import dao.Exercise_dao;
-import model.Exercise;
+import model.*;
+import dao.Dimension_dao;;
+@Path("/dimension")
+public class DimensionRest {
 
-
-@Path("/exercise")
-public class ExerciseInfo {
-	
-	@GET
+	 // HTTP Get Method
+    @GET
     // Path: http://localhost/<appln-folder-name>/login/dologin
-    @Path("/info")
+    @Path("/lastDimension")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
     // Query parameters are parameters: http://localhost/<appln-folder-name>/login/dologin?username=abc&password=xyz
-    public Exercise exerciseInfo(@QueryParam("exerciseId") int id) throws SQLException{
-		
-		return Exercise_dao.getExercise(id);
-		
-		
-	}
+    public Dimension getLastDimension(@QueryParam("userId") int uId,@QueryParam("dimensionId") int dimensionId) throws SQLException{
+    
+ 
+    	return Dimension_dao.getLastDimension(uId, dimensionId);       
+    }
+ 
 	
 	
 	
-	
-	
-
 }
