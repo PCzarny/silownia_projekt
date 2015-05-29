@@ -8,7 +8,7 @@ import java.sql.Statement;
 import silownia_java.DBConnection;
 import model.Exercise;
 
-public class Exercise_dao {
+public class ExerciseDAO {
 
 	
 	public static Exercise getExercise(int id) throws SQLException{

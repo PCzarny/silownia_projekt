@@ -9,7 +9,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import model.User;
-import dao.User_dao;
+import dao.UserDAO;
 @Path("/user")
 public class UserInfo {
 	
@@ -29,7 +29,7 @@ public class UserInfo {
          //   response = Utility.constructJSON("login", false, "Incorrect Email or Password");
        // }
     	System.out.println("IUD"+uId);
-    	return User_dao.getUser(uId);       
+    	return UserDAO.getUser(uId);       
     }
  
 

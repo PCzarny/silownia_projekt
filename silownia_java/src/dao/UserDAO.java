@@ -8,7 +8,7 @@ import java.sql.Statement;
 import silownia_java.DBConnection;
 import model.User;
 
-public class User_dao {
+public class UserDAO {
 
 	
 	public static User getUser(int userId) throws SQLException{

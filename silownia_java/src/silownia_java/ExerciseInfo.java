@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import dao.Exercise_dao;
+import dao.ExerciseDAO;
 import model.Exercise;
 
 
@@ -23,7 +23,7 @@ public class ExerciseInfo {
     // Query parameters are parameters: http://localhost/<appln-folder-name>/login/dologin?username=abc&password=xyz
     public Exercise exerciseInfo(@QueryParam("exerciseId") int id) throws SQLException{
 		
-		return Exercise_dao.getExercise(id);
+		return ExerciseDAO.getExercise(id);
 		
 		
 	}
