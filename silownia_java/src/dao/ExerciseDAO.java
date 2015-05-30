@@ -52,12 +52,6 @@ public class ExerciseDAO {
 	        }
 		 
 		 return exercise;
-		
-		
-		
-		
-		
-		
 	}
 	
 }

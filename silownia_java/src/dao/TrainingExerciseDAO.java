@@ -26,10 +26,11 @@ public class TrainingExerciseDAO {
 	                e.printStackTrace();
 	            }
 	            Statement stmt = dbConn.createStatement();
-	            String query = "SELECT * FROM exercise WHERE exercise_id = '" + trainingDayId+"'";
+	            String query = "SELECT * FROM training_exercise_view WHERE TRAINING_DAY_TRAINING_DAY_ID = '" + trainingDayId+"'";
 	            System.out.println(query);
 	            ResultSet rs = stmt.executeQuery(query);
 	            while (rs.next()) {
+	            	exercise = new TrainingExercise();
 	            	exercise.setExercise_id(rs.getInt(8));
 	            	exercise.setName(rs.getString(1));
 	            	exercise.setDesription(rs.getString(2));

@@ -33,10 +33,12 @@ public static ArrayList<TrainingDay> getTrainingDays(int trainingPlanId) throws 
 	            System.out.println(query);
 	            ResultSet rs = stmt.executeQuery(query);
 	            while (rs.next()) {
+	            	day = new TrainingDay();
 	            	day.setDayNr(rs.getInt(2));
 	            	day.setTrainingDayID(rs.getInt(1));
 	            	day.setTrainingPlanID(rs.getInt(3));
 	        	    day.setExercises(TrainingExerciseDAO.getTrainingExercises(day.getTrainingDayID()));
+	        	    days.add(day);
 	            }
 	        } catch (SQLException sqle) {
 	            throw sqle;
