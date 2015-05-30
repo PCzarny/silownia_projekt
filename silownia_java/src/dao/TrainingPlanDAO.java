@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import java.util.ArrayList;
 
+
 import model.TrainingPlan;
 import silownia_java.DBConnection;
 
@@ -167,5 +168,38 @@ public class TrainingPlanDAO {
 		
 	}
 	
-	
+	//Dodawanie planu treningowego
+	public static void createTreningPlanRow(TrainingPlan plan) throws SQLException{
+		
+		Connection dbConn = null;
+		String sql = "call silownia_baza.add_new_training_plan(?, ?, ?, ?);";
+	     try {
+	    	 try{
+	    		 dbConn = DBConnection.createConnection();
+	             System.out.println(dbConn);
+	            } 
+	    	 	catch (Exception e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+	    	 	ps.setInt(1, plan.getOwner());
+	    	 	ps.setInt(2, plan.getPeriod());
+	    	 	ps.setString(3, plan.getName());
+	    	 	ps.setInt(4, plan.getCategoryId());
+	    	 	
+	        } catch (SQLException sqle) {
+	            throw sqle;
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	            throw e;
+	        } finally {
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	        }		
+	}	
 }
