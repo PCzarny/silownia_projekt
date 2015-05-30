@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 
 import model.TrainingDay;
@@ -58,10 +59,42 @@ public static ArrayList<TrainingDay> getTrainingDays(int trainingPlanId) throws 
 
 // dodawanie dnia do planu treningowego 
 
-public static void addTrainingDay(TrainingDay trainingDay){
+public static void addTrainingDay(TrainingDay trainingDay) throws SQLException{
+	
+	Connection dbConn = null;
+	String sql = "call add_training_day(?, ?);";
+     try {
+    	 try{
+    		 dbConn = DBConnection.createConnection();
+             System.out.println(dbConn);
+            } 
+    	 	catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+    	 	ps.setInt(1, trainingDay.getTrainingPlanID());
+    	 	ps.setInt(2, trainingDay.getDayNr());
+    	 	
+   
+    	 	ps.execute();
+        } catch (SQLException sqle) {
+            throw sqle;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            if (dbConn != null) {
+                dbConn.close();
+            }
+            throw e;
+        } finally {
+            if (dbConn != null) {
+                dbConn.close();
+            }
+        }		
+}	
 	
 	
-}
+	
 
 
 
