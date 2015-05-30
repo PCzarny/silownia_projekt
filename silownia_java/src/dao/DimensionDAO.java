@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 
 import silownia_java.DBConnection;
 import model.Dimension;
+
 
 
 public class DimensionDAO {
@@ -106,6 +108,41 @@ public class DimensionDAO {
 		 return dimensions;
 		
 	}
+	
+	
+public static void addUserDimmension(Dimension dimension) throws SQLException{
+		
+		Connection dbConn = null;
+		String sql = "call add_user_dimmension(?, ?, ?, ?);";
+	     try {
+	    	 try{
+	    		 dbConn = DBConnection.createConnection();
+	             System.out.println(dbConn);
+	            } 
+	    	 	catch (Exception e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+	    	 	ps.setInt(1, dimension.getUser_id());
+	    	 	ps.setInt(2, dimension.getDimension_id());
+	    	 	ps.setInt(3, dimension.getValue());
+	    	 	ps.setDate(4, dimension.getCreated_on());
+	    	 	ps.execute();
+	        } catch (SQLException sqle) {
+	            throw sqle;
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	            throw e;
+	        } finally {
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	        }		
+	}	
 	
 
 }
