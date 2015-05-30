@@ -20,9 +20,9 @@ public class TrainingExercise extends Exercise {
 	public void setTrainingDayID(int trainingDayID) {
 		this.trainingDayID = trainingDayID;
 	}
-	int series;
-	int repeats;
-	int trainingDayID;
+	private int series;
+	private int repeats;
+	private int trainingDayID;
 	
 	
 }

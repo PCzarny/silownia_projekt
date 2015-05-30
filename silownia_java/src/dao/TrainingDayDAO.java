@@ -55,6 +55,22 @@ public static ArrayList<TrainingDay> getTrainingDays(int trainingPlanId) throws 
 	        }
 		 return days;
 	}
+
+// dodawanie dnia do planu treningowego 
+
+public static void addTrainingDay(TrainingDay trainingDay){
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+
+	
 	
 	
 }

@@ -39,8 +39,17 @@ public class TrainingPlanREST {
     // Produces JSON as response
     @Consumes(MediaType.APPLICATION_JSON) 
     // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/plansByID?userId=1
-    public Response addPlanRow(InputStream data) throws SQLException{
-		  StringBuilder crunchifyBuilder = new StringBuilder();
+    public void addPlanRow(TrainingPlan data) throws SQLException{
+		
+		System.out.println("addplan");
+		
+		System.out.println(data.toString());
+		
+		
+		
+		
+		
+		/* StringBuilder crunchifyBuilder = new StringBuilder();
 	        try {
 	            BufferedReader in = new BufferedReader(new InputStreamReader(data));
 	            String line = null;
@@ -53,8 +62,11 @@ public class TrainingPlanREST {
 	        System.out.println("Data Received: " + crunchifyBuilder.toString());
 	 
 	        // return HTTP response 200 in case of success
-	        return Response.status(200).entity(crunchifyBuilder.toString()).build();
+	        return Response.status(200).entity(crunchifyBuilder.toString()).build();*/
 		
 	}
+	
+	
+	
 	
 }

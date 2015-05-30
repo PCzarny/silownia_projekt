@@ -9,7 +9,7 @@ public class TrainingPlan {
 //	private int series;
 //	private int value ; 
 //	private String name;
-	ArrayList <TrainingDay> trainingDays = new ArrayList<TrainingDay>();
+	ArrayList <TrainingDay> trainingDays ;
 //	private String description;
 	private Date start_time;
 	private int is_active;
