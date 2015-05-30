@@ -11,7 +11,7 @@ import silownia_java.DBConnection;
 public class UserTrainingDAO {
 
 	// Pobieranie planów z tabeli user_has_training_plan po parametrze byXXX zgodnie z ConstantsDAO oraz o wartosci value
-	public static ArrayList<TrainingPlan> getTrainingPlans(int byXXX, int value, int active) throws SQLException{
+	public static ArrayList<TrainingPlan> getTrainingPlans(int byXXX, int value, int active,boolean short_version) throws SQLException{
 		
 			Boolean b = true;
 			Connection dbConn = null;
@@ -71,6 +71,7 @@ public class UserTrainingDAO {
 		            	trainingPlan.setCategoryId(rs.getInt(9));
 		            	trainingPlan.setCategoryName(rs.getString(10));
 		            	trainingPlan.setName(rs.getString(8));
+		            	if (short_version!=true)
 		            	trainingPlan.setTrainingDays(TrainingDayDAO.getTrainingDays(rs.getInt(6)));
 		            	plans.add(trainingPlan);
 		            }
