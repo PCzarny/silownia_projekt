@@ -174,7 +174,7 @@ public class TrainingPlanDAO {
 	public static void addTreningPlanRow(TrainingPlan plan) throws SQLException{
 		
 		Connection dbConn = null;
-		String sql = "call silownia_baza.add_new_training_plan(?, ?, ?, ?);";
+		String sql = "call add_new_training_plan(?, ?, ?, ?);";
 	     try {
 	    	 try{
 	    		 dbConn = DBConnection.createConnection();
