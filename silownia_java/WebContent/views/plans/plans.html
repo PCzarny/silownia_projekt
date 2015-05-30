@@ -1,0 +1,18 @@
+<div>
+	<div ng-show="errorMessage" class="alert alert-danger" role="alert">
+		{{errorMessage}}
+	</div>
+	
+	<div class = 'content'>
+	    <table class="table">
+	        <tr ng-repeat="plan in vm.data">
+	            <td data-title="'Name'">
+	                {{plan.name}}
+	            </td>
+	            <td data-title="'Age'">
+	                {{plan.start_time}}
+	            </td>
+	        </tr>
+	    </table>
+	</div>
+</div>

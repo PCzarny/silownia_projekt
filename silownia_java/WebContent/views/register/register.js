@@ -10,11 +10,11 @@
 		}])
 		.controller('RegisterController', RegisterController);
 
-	RegisterController.$inject = ['$scope', '$rootScope', '$location', '$http'];
-	function RegisterController($scope, $rootScope, $location, $http) {
+	RegisterController.$inject = ['$scope', '$location', '$http', 'AuthService'];
+	function RegisterController($scope, $location, $http, AuthService) {
 		$scope.errorMessage = false;
 		
-		console.og(AuthService.isAuthenticated())
+		console.log(AuthService.isAuthenticated());
 		
 		
 		$('#submit-button').on('click', function () {
