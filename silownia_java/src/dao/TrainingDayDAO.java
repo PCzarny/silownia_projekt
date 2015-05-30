@@ -61,11 +61,6 @@ public static ArrayList<TrainingDay> getTrainingDays(int trainingPlanId) throws 
 public static void addTrainingDay(TrainingDay trainingDay){
 	
 	
-	
-	
-	
-	
-	
 }
 
 

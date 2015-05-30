@@ -1,8 +1,6 @@
 package silownia_java;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -36,19 +34,15 @@ public class TrainingPlanREST {
 	@POST
     // Path: http://localhost/<appln-folder-name>/rest/plan
     @Path("/addPlanRow")
-    // Produces JSON as response
+    // Consumes JSON
     @Consumes(MediaType.APPLICATION_JSON) 
-    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/plansByID?userId=1
-    public void addPlanRow(TrainingPlan data) throws SQLException{
+    // Wywo³anie: http://localhost:8080/silownia_java/rest/plan/addPlanRow
+	//JSON format : {"trainingDays":null,"start_time":null,"is_active":null,"current_day":1,"period":2,"user_id":1,"training_plan_id":1,"owner":1,"name":null,"categoryId":0,"categoryName":null}
+    public Response addPlanRow(TrainingPlan plan) throws SQLException{
 		
-		System.out.println("addplan");
-		
-		System.out.println(data.toString());
-		
-		
-		
-		
-		
+
+		TrainingPlanDAO.addTreningPlanRow(plan);
+		//System.out.println("hehehe");
 		/* StringBuilder crunchifyBuilder = new StringBuilder();
 	        try {
 	            BufferedReader in = new BufferedReader(new InputStreamReader(data));
@@ -61,12 +55,9 @@ public class TrainingPlanREST {
 	        }
 	        System.out.println("Data Received: " + crunchifyBuilder.toString());
 	 
-	        // return HTTP response 200 in case of success
-	        return Response.status(200).entity(crunchifyBuilder.toString()).build();*/
+	        // return HTTP response 200 in case of success*/
+	       return Response.status(200).entity("Powodzenie").build();
 		
 	}
-	
-	
-	
 	
 }

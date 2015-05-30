@@ -58,4 +58,51 @@ public class TrainingExerciseDAO {
 		 return exercises;
 	}
 	
+public static void  getTrainingExercises(ArrayList<TrainingExercise>) throws SQLException{
+		
+		Connection dbConn = null;
+		TrainingExercise exercise = new TrainingExercise(); 
+		ArrayList<TrainingExercise> exercises = new ArrayList<TrainingExercise>();
+	     try {
+	    	 try{
+	    		 dbConn = DBConnection.createConnection();
+	             System.out.println(dbConn);
+	            } 
+	    	 	catch (Exception e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	            Statement stmt = dbConn.createStatement();
+	            String query = "SELECT * FROM training_exercise_view WHERE TRAINING_DAY_TRAINING_DAY_ID = '" + trainingDayId+"'";
+	            System.out.println(query);
+	            ResultSet rs = stmt.executeQuery(query);
+	            while (rs.next()) {
+	            	exercise = new TrainingExercise();
+	            	exercise.setExercise_id(rs.getInt(8));
+	            	exercise.setName(rs.getString(1));
+	            	exercise.setDesription(rs.getString(2));
+	            	exercise.setUrl(rs.getString(5));
+	            	exercise.setPermission(rs.getInt(6));
+	            	exercise.setUser_id(rs.getInt(7));   
+	            	exercise.setSeries(rs.getInt(3));
+	            	exercise.setRepeats(rs.getInt(4));
+	            	exercise.setTrainingDayID(rs.getInt(9));
+	            	exercises.add(exercise);
+	            }
+	        } catch (SQLException sqle) {
+	            throw sqle;
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	            throw e;
+	        } finally {
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	        }
+		 return exercises;
+	}
+	
 }

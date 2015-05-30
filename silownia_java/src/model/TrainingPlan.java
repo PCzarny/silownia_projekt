@@ -106,15 +106,14 @@ public class TrainingPlan {
 		this.training_plan_id = training_plan_id;
 	}
 
-
 	public int getOwner() {
 		return owner;
 	}
 
-
 	public void setOwner(int owner) {
 		this.owner = owner;
 	}
+	
 	
 
 }

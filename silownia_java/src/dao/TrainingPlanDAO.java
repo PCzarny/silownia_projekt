@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
+import java.sql.Types;
 import java.util.ArrayList;
+
 
 
 import model.TrainingPlan;
@@ -169,7 +171,7 @@ public class TrainingPlanDAO {
 	}
 	
 	//Dodawanie planu treningowego
-	public static void createTreningPlanRow(TrainingPlan plan) throws SQLException{
+	public static void addTreningPlanRow(TrainingPlan plan) throws SQLException{
 		
 		Connection dbConn = null;
 		String sql = "call silownia_baza.add_new_training_plan(?, ?, ?, ?);";
@@ -186,8 +188,11 @@ public class TrainingPlanDAO {
 	    	 	ps.setInt(1, plan.getOwner());
 	    	 	ps.setInt(2, plan.getPeriod());
 	    	 	ps.setString(3, plan.getName());
-	    	 	ps.setInt(4, plan.getCategoryId());
-	    	 	
+	    	 	if(plan.getCategoryId()!=0)
+	    	 		ps.setInt(4, plan.getCategoryId());
+	    	 	else
+	    	 		ps.setNull(4, Types.INTEGER);
+	    	 	ps.execute();
 	        } catch (SQLException sqle) {
 	            throw sqle;
 	        } catch (Exception e) {
