@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class TrainingDay {
-
+	
 	public ArrayList<TrainingExercise> getExercises() {
 		return exercises;
 	}

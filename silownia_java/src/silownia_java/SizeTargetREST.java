@@ -33,7 +33,7 @@ public class SizeTargetREST {
     @Path("/allTargets")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
-    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/allTargets/info?userId=1
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/target/allTargets?userId=1
     public ArrayList<SizeTarget> AllTargetsInfo(@QueryParam("userId") int userId) throws SQLException{
 		
 		return SizeTargetDAO.getAllTargets(userId);
