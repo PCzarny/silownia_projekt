@@ -21,14 +21,15 @@ public class TrainingPlanREST {
 
 	@GET
     // Path: http://localhost/<appln-folder-name>/rest/plan
-    @Path("/plansByID")
+    @Path("/getPlans")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
-    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/plansByID?userId=1
-    public ArrayList<TrainingPlan> AllTrainingPlans(@QueryParam("userId") int userId) throws SQLException{
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlans?byXXX=1&value=1
+	// Parametr byXXX zgodny z klasa ConstanstDAO, value to wartosc np. id, powyzszy przyklad wyszukuje po id=1
+    public ArrayList<TrainingPlan> AllTrainingPlans(@QueryParam("byXXX") int byXXX, @QueryParam("value") int value) throws SQLException{
 		
-		return TrainingPlanDAO.getTrainingPlansByUserID(userId);
-		
+		return TrainingPlanDAO.getTrainingPlans(byXXX,value);
+	
 	}
 	
 	@POST
