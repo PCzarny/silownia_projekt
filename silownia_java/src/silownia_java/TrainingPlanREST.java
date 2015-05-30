@@ -25,11 +25,13 @@ public class TrainingPlanREST {
     @Path("/getPlans")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
-    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlans?byXXX=1&value=1&active=2
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlans?byXXX=1&value=1&active=2&short=false
 	// Parametr byXXX zgodny z klasa ConstanstDAO, value to wartosc np. id, powyzszy przyklad wyszukuje po id=1, nie wazne czy aktywne czy nie, active=0->nieaktywne, active=1->aktywne, acitve>1->obojetnie
-    public ArrayList<TrainingPlan> AllTrainingPlans(@QueryParam("byXXX") int byXXX, @QueryParam("value") int value, @QueryParam("active") int active) throws SQLException{
+    // parametr short dodany w celu wyswietlania skroconego treningu 
+    
+    public ArrayList<TrainingPlan> AllTrainingPlans(@QueryParam("byXXX") int byXXX, @QueryParam("value") int value, @QueryParam("active") int active,@QueryParam("short") boolean short_version) throws SQLException{
 		
-		return UserTrainingDAO.getTrainingPlans(byXXX,value,active);
+		return UserTrainingDAO.getTrainingPlans(byXXX,value,active,short_version);
 	
 	}
 	

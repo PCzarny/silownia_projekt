@@ -18,8 +18,6 @@ public class TrainingPlan {
 	private int user_id;
 	private int training_plan_id;
 	private int owner;
-
-
 	private String name;
 	private int categoryId;
 	private String categoryName;
