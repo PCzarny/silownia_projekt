@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 import model.SizeTarget;
 import silownia_java.DBConnection;
 
@@ -100,4 +101,40 @@ public class SizeTargetDAO {
 		 return sizeTargets;
 		
 	}
+	
+public static void addSizeTarget(SizeTarget sizeTarget) throws SQLException{
+		
+		Connection dbConn = null;
+		String sql = "call add_size_target(?, ?, ?, ?);";
+	     try {
+	    	 try{
+	    		 dbConn = DBConnection.createConnection();
+	             System.out.println(dbConn);
+	            } 
+	    	 	catch (Exception e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+	    	 	ps.setInt(1, sizeTarget.getDimensionId());
+	    	 	ps.setInt(2, sizeTarget.getUserId());
+	    	 	ps.setInt(3, sizeTarget.getValue());
+	    	 	ps.setDate(4, sizeTarget.getDeadline());
+	    	 	ps.execute();
+	        } catch (SQLException sqle) {
+	            throw sqle;
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	            throw e;
+	        } finally {
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	        }		
+	}
+	
+	
 }
