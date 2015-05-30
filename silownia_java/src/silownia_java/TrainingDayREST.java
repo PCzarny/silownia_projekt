@@ -3,6 +3,7 @@ package silownia_java;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -34,7 +35,7 @@ public class TrainingDayREST {
     // Path: http://localhost/<appln-folder-name>/login/dologin
     @Path("/addDay")
     // Produces JSON as response
-    @Produces(MediaType.APPLICATION_JSON) 
+    @Consumes(MediaType.APPLICATION_JSON) 
     // Query parameters are parameters: http://localhost:8080/silownia_java/rest/trainingDay/addDay
 	// JSON {"exercises":null,"trainingDayID":null,"dayNr":4,"trainingPlanID":1} 
 	
