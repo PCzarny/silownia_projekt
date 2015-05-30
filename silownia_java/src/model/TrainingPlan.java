@@ -18,10 +18,43 @@ public class TrainingPlan {
 	private int user_id;
 	private int training_plan_id;
 	private int owner;
+
+
+	private String name;
+	private int categoryId;
+	private String categoryName;
 //	private String url ;
 	
 	
-	
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	
 	public Date getStart_time() {
 		return start_time;
