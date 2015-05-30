@@ -3,7 +3,7 @@ package model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class TraningPlan {
+public class TrainingPlan {
 	
 //	private int day_nr; 
 //	private int series;
@@ -12,11 +12,12 @@ public class TraningPlan {
 	ArrayList <TrainingDay> trainingDays = new ArrayList<TrainingDay>();
 //	private String description;
 	private Date start_time;
-	private boolean is_active;
+	private int is_active;
 	private int current_day;
 	private int period;
 	private int user_id;
 	private int training_plan_id;
+	private int owner;
 //	private String url ;
 	
 	
@@ -41,10 +42,10 @@ public class TraningPlan {
 		this.start_time = start_time;
 	}
 	
-	public boolean isIs_active() {
+	public int Is_active() {
 		return is_active;
 	}
-	public void setIs_active(boolean is_active) {
+	public void setIs_active(int is_active) {
 		this.is_active = is_active;
 	}
 	public int getCurrent_day() {
@@ -70,6 +71,16 @@ public class TraningPlan {
 	}
 	public void setTraining_plan_id(int training_plan_id) {
 		this.training_plan_id = training_plan_id;
+	}
+
+
+	public int getOwner() {
+		return owner;
+	}
+
+
+	public void setOwner(int owner) {
+		this.owner = owner;
 	}
 	
 
