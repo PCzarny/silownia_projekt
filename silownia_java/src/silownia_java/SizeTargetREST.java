@@ -3,11 +3,14 @@ package silownia_java;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import model.SizeTarget;
 import dao.SizeTargetDAO;
@@ -39,4 +42,21 @@ public class SizeTargetREST {
 		return SizeTargetDAO.getAllTargets(userId);
 		
 	}
+	
+	
+	@POST
+    // Path: 
+    @Path("/addSizeTarget")
+    
+    @Consumes(MediaType.APPLICATION_JSON) 
+    // http://localhost:8080/silownia_java/rest/target/addSizeTarget
+	// JSON
+	// {"userId": 1,"targetId":null,"dimensionId":1,"dimensionName":null,"value":80,"unit":null,"deadline":"2015-08-01"}
+    public Response addSizeTarget(SizeTarget sizeTarget) throws SQLException{
+		
+		SizeTargetDAO.addSizeTarget(sizeTarget);
+    	return Response.status(200).entity("Powodzenie").build();
+
+	}
+	
 }
