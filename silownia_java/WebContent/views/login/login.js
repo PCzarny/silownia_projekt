@@ -12,12 +12,15 @@
 		.controller('LoginController', LoginController);
 
 	LoginController.$inject = ['$scope', '$rootScope', 'AuthService', 'UserService', '$location'];
-	function LoginController($scope, $rootScope, AuthService, UserService, $location) {
+
+	function LoginController($scope, $rootScope, AuthService, UserService, $location){
+	
+
 		$scope.errorMessage = false;
 		
 		var vm = this;
 		
-		UserService.setUser(undefined);
+		
 
 		$('#login-button').on('click', function () {
 			var credentials = {
