@@ -2,7 +2,3 @@ silownia_java/.classpath
 silownia_java/.settings
 
 silownia_java/target/**
-
-silownia_java/WebContent/META-INF/**
-
-silownia_java/WEB-INF/**

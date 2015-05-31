@@ -9,9 +9,9 @@
 			controllerAs : 'vm'
 		});
 		}])
-		.controller('PlansController', RegisterController);
+		.controller('PlansController', PlansController);
 
-	RegisterController.$inject = ['$scope', '$location', '$http', 'UserService'];
+	PlansController.$inject = ['$scope', '$location', '$http', 'UserService'];
 	function RegisterController($scope, $location, $http, UserService)
 	{
 		var vm = this;
@@ -24,5 +24,10 @@
 				vm.data = d;
 				console.log("Succes");
 			});
+		
+		vm.showPlan = function(){
+			$location.path('/home')
+			colsole.log({{}})
+		}
 	}
 })();
