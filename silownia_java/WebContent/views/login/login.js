@@ -11,9 +11,9 @@
 		.controller('LoginController', LoginController);
 
 	LoginController.$inject = ['$scope', '$rootScope', 'AuthService', 'UserService', '$location'];
-	function LoginController($scope, $rootScope, AuthService, UserService, $location) {zd
+	function LoginController($scope, $rootScope, AuthService, UserService, $location)
+	{
 		$scope.errorMessage = false;
-		UserService.setUser(undefined);
 
 		$('#submit-button').on('click', function () {
 			var credentials = {
