@@ -7,7 +7,6 @@ silownia_java/WebContent/META-INF/**
 
 silownia_java/WEB-INF/**
 
-*/.project
 */pom.xml
 
 baza_danych.sql
