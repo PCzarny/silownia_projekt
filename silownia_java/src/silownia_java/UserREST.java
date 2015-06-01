@@ -2,16 +2,21 @@ package silownia_java;
 
 import java.sql.SQLException;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import model.TrainingPlan;
 import model.User;
+import dao.TrainingPlanDAO;
 import dao.UserDAO;
 @Path("/user")
-public class UserInfo {
+public class UserREST {
 	
 	 // HTTP Get Method
     @GET
@@ -32,5 +37,19 @@ public class UserInfo {
     	return UserDAO.getUser(uId);       
     }
  
+    @POST
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/updateProfile")
+    // Consumes JSON
+    @Consumes(MediaType.APPLICATION_JSON) 
+    // Wywo³anie: http://localhost:8080/silownia_java/rest/user/updateProfile
+	//JSON format :{"userId":2,"name":"Micha³","surname":"Sztuka","login":"tracer","password":"haslo","email":"nowy@email","create_on":"2015-04-14"}
+    public Response addPlanRow(User user) throws SQLException{
+
+		UserDAO.updateProfile(user);
+		
+		return Response.status(200).entity("Powodzenie").build();
+		
+	}
 
 }
