@@ -43,7 +43,8 @@ public class UserTrainingDAO {
 		    	 	else if(byXXX == ConstantsDAO.TRAINING_PLAN_ID )
 		    	 		sql += "training_plan_id = ?";
 
-		    	 	sql += " LIMIT ?";
+		    	 	if(limit!=0)
+		    	 		sql += " LIMIT ?";
 		    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
 		    	 	if(byXXX!=ConstantsDAO.ACTIVE)
 				    	ps.setInt(1, value);
@@ -53,7 +54,8 @@ public class UserTrainingDAO {
 				    		b=false;
 		    	 		ps.setBoolean(1, b);
 		    	 	}
-		    	 	ps.setInt(2, limit);
+		    	 	if(limit!=0)
+		    	 		ps.setInt(2, limit);
 
 		    	 	System.out.println(ps.toString());
 		    	 	ResultSet rs = ps.executeQuery();
@@ -94,7 +96,9 @@ public class UserTrainingDAO {
 		public static ArrayList<TrainingPlan> getPlansByCat(int catId, int limit,boolean short_version) throws SQLException{
 			
 				Connection dbConn = null;
-				String sql = "SELECT * FROM uniqe_training_plan WHERE training_category_id = ? LIMIT ?";
+				String sql = "SELECT * FROM uniqe_training_plan WHERE training_category_id = ?";
+				if(limit!=0)
+					sql+=" LIMIT ?";
 				
 				TrainingPlan trainingPlan = new TrainingPlan(); 
 				ArrayList<TrainingPlan> plans = new ArrayList<TrainingPlan>();
@@ -111,7 +115,8 @@ public class UserTrainingDAO {
 			    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
 			    	 	
 					    ps.setInt(1, catId);
-			    	 	ps.setInt(2, limit);
+			    	 	if(limit!=0)
+			    	 		ps.setInt(2, limit);
 
 			    	 	System.out.println(ps.toString());
 			    	 	ResultSet rs = ps.executeQuery();
@@ -149,7 +154,9 @@ public class UserTrainingDAO {
 	public static ArrayList<TrainingPlan> getOwnerPlans(int ownerId, int limit,boolean short_version) throws SQLException{
 		
 			Connection dbConn = null;
-			String sql = "SELECT * FROM uniqe_training_plan WHERE owner_user_id = ? LIMIT ?";
+			String sql = "SELECT * FROM uniqe_training_plan WHERE owner_user_id = ?";
+			if(limit!=0)
+				sql+=" LIMIT ?";
 			
 			TrainingPlan trainingPlan = new TrainingPlan(); 
 			ArrayList<TrainingPlan> plans = new ArrayList<TrainingPlan>();
@@ -166,7 +173,8 @@ public class UserTrainingDAO {
 		    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
 		    	 	
 				    ps.setInt(1, ownerId);
-		    	 	ps.setInt(2, limit);
+		    	 	if(limit!=0)
+		    	 		ps.setInt(2, limit);
 
 		    	 	System.out.println(ps.toString());
 		    	 	ResultSet rs = ps.executeQuery();
@@ -220,12 +228,14 @@ public class UserTrainingDAO {
 		                e.printStackTrace();
 		            }
 		    	 	sql += "user_user_id = ?";
-		    	 	sql += " LIMIT ?";
+		    	 	if(limit!=0)
+		    	 		sql += " LIMIT ?";
 		    	 	
 		    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
 		    	 	
 				    ps.setInt(1, userId);
-		    	 	ps.setInt(2, limit);
+		    	 	if(limit!=0)
+		    	 		ps.setInt(2, limit);
 
 		    	 	System.out.println(ps.toString());
 		    	 	ResultSet rs = ps.executeQuery();

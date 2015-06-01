@@ -97,20 +97,6 @@ public class TrainingPlanREST {
 		
 
 		TrainingPlanDAO.addTreningPlanRow(plan);
-		//System.out.println("hehehe");
-		/* StringBuilder crunchifyBuilder = new StringBuilder();
-	        try {
-	            BufferedReader in = new BufferedReader(new InputStreamReader(data));
-	            String line = null;
-	            while ((line = in.readLine()) != null) {
-	                crunchifyBuilder.append(line);
-	            }
-	        } catch (Exception e) {
-	            System.out.println("Error Parsing: - ");
-	        }
-	        System.out.println("Data Received: " + crunchifyBuilder.toString());
-	 
-	        // return HTTP response 200 in case of success*/
 	       return Response.status(200).entity("Powodzenie").build();
 		
 	}
