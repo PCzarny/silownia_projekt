@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 
 
+
 import com.mysql.jdbc.PreparedStatement;
 
 import model.TrainingPlan;
@@ -19,13 +20,13 @@ import silownia_java.DBConnection;
 
 public class TrainingPlanDAO {
 	
-// Pobieranie planów z tabeli training_plan po parametrze byXXX zgodnie z ConstantsDAO oraz o wartosci value
-	public static TrainingPlan getTrainingPlans(int planId) throws SQLException{
+// Pobieranie planów z tabeli training_plan po id planu 
+	public static TrainingPlan getTrainingPlan(int planId, Boolean shortVersion) throws SQLException{
 	
-		Boolean b = true;
 		Connection dbConn = null;
+	 	TrainingPlan trainingPlan = new TrainingPlan(); 
 		String sql = "SELECT * FROM training_plan_view WHERE training_plan_id = ? LIMIT 1";
-		TrainingPlan trainingPlan = new TrainingPlan(); 
+		
 	     try {
 	    	 try{
 	    		 dbConn = DBConnection.createConnection();
@@ -42,17 +43,21 @@ public class TrainingPlanDAO {
 
 	    	 	System.out.println(ps.toString());
 	    	 	ResultSet rs = ps.executeQuery();
-            	trainingPlan.setIs_active(rs.getInt(1));
-            	trainingPlan.setCurrent_day(rs.getInt(2));
-            	trainingPlan.setStart_time(rs.getDate(3));
-            	trainingPlan.setUser_id(rs.getInt(4));
-            	trainingPlan.setPeriod(rs.getInt(5));
-            	trainingPlan.setTraining_plan_id(rs.getInt(6));
-            	trainingPlan.setOwner(rs.getInt(7));  
-            	trainingPlan.setCategoryId(rs.getInt(9));
-            	trainingPlan.setCategoryName(rs.getString(10));
-            	trainingPlan.setName(rs.getString(8));
-            	trainingPlan.setTrainingDays(TrainingDayDAO.getTrainingDays(rs.getInt(6)));
+	            while (rs.next()) {
+	            	trainingPlan = new TrainingPlan();
+	            	trainingPlan.setIs_active(rs.getInt(1));
+	            	trainingPlan.setCurrent_day(rs.getInt(2));
+	            	trainingPlan.setStart_time(rs.getDate(3));
+	            	trainingPlan.setUser_id(rs.getInt(4));
+	            	trainingPlan.setPeriod(rs.getInt(5));
+	            	trainingPlan.setTraining_plan_id(rs.getInt(6));
+	            	trainingPlan.setOwner(rs.getInt(7));  
+	            	trainingPlan.setCategoryId(rs.getInt(9));
+	            	trainingPlan.setCategoryName(rs.getString(10));
+	            	trainingPlan.setName(rs.getString(8));
+	            	if (shortVersion!=true)
+	            		trainingPlan.setTrainingDays(TrainingDayDAO.getTrainingDays(rs.getInt(6)));
+	            }
 	            	
 	        } catch (SQLException sqle) {
 	            throw sqle;

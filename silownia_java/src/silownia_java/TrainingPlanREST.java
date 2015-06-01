@@ -40,11 +40,11 @@ public class TrainingPlanREST {
     @Path("/getPlanByID")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
-    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlanByID?planId=1
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlanByID?planId=1&shortVersion=true
 	// Zwraca plan o konkretnym ID
-    public TrainingPlan getTrainingPlan(@QueryParam("planId") int planId) throws SQLException{
+    public TrainingPlan getTrainingPlan(@QueryParam("planId") int planId, @QueryParam("shortVersion") Boolean shortVersion) throws SQLException{
 		
-		return TrainingPlanDAO.getTrainingPlans(planId);
+		return TrainingPlanDAO.getTrainingPlan(planId, shortVersion);
 	
 	}
 	
