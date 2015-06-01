@@ -101,7 +101,7 @@ public class UserDAO {
 		public static int updateProfile(User user) throws SQLException{
 			 Connection dbConn = null;
 			 int result = 0;
-			 String sql = "UPDATE user SET name = ?, login = ?, surname = ?, password = ?, email = ? WHERE login = ? ";
+			 String sql = "UPDATE user SET name = ?, login = ?, surname = ?, password = ?, email = ? WHERE user_id = ? ";
 		        try {
 		            try {
 		                dbConn = DBConnection.createConnection();
@@ -116,7 +116,7 @@ public class UserDAO {
 		            ps.setString(3, user.getSurname());
 		            ps.setString(4, user.getPassword());
 		            ps.setString(5, user.getEmail());
-		            ps.setString(6, user.getLogin());
+		            ps.setInt(6, user.getUserId());
 		            
 		            System.out.println(ps);
 		            ps.executeUpdate();
