@@ -12,7 +12,7 @@
 		.controller('PlansController', PlansController);
 
 	PlansController.$inject = ['$scope', '$location', '$http', 'UserService'];
-	function RegisterController($scope, $location, $http, UserService)
+	function PlansController($scope, $location, $http, UserService)
 	{
 		var vm = this;
 		vm.user = UserService.getUser();
@@ -24,5 +24,9 @@
 				vm.data = d;
 				console.log("Succes");
 			});
+		
+		$('tr').click(function() {
+		    console.log("wiersz");
+		});
 	}
 })();
