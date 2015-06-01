@@ -22,7 +22,7 @@ public class TrainingPlanDAO {
 	
 // Pobieranie planów z tabeli training_plan po id planu 
 	public static TrainingPlan getTrainingPlan(int planId, Boolean shortVersion) throws SQLException{
-	
+	System.out.println("ok");
 		Connection dbConn = null;
 	 	TrainingPlan trainingPlan = new TrainingPlan(); 
 		String sql = "SELECT * FROM training_plan_view WHERE training_plan_id = ? LIMIT 1";
