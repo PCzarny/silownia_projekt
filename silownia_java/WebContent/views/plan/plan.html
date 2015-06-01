@@ -1,0 +1,31 @@
+<div>
+	<div ng-show="errorMessage" class="alert alert-danger" role="alert">
+		{{errorMessage}}
+	</div>
+	
+	<div class = 'content'>
+	    <table class="table table-hover table-bordered">
+	    	<thead>
+	    		<tr>
+	    			<th>Nazwa treningu</th>
+	    			<th>Kategoria</th>
+	    			<th>Czas rozpoczêcia</th>
+	    			<th>D³ugoœæ treningu</th>
+	    			<th>Aktualny dzieñ</th>
+	    			<th>Twórca</th>
+	    		</tr>
+	        </thead>
+	        <tbody>
+		        <tr ng-repeat="plan in vm.data">
+		            <td>{{plan.name}}</td>
+	    			<td>{{plan.categoryName}}</td>
+	    			<td>{{plan.start_time}}</td>
+	    			<td>{{plan.period}}</td>
+	    			<td>{{plan.current_day}}</td>
+	    			<td>{{plan.owner}}</td>
+	    			<td><a href="/plan">Poka¿ trening</a></td>
+		        </tr>
+	        </tbody>
+	    </table>
+	</div>
+</div>

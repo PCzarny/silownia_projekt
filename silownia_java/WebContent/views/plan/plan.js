@@ -16,6 +16,5 @@
 		//$scope.planId = $routeParams['plan'];
 		
 		console.log("plan");
-		
 	}
 })();
