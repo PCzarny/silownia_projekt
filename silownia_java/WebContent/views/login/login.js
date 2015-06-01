@@ -14,7 +14,7 @@
 	function LoginController($scope, $rootScope, AuthService, UserService, $location){
 		$scope.errorMessage = false;
 
-		$('#submit-button').on('click', function () {
+		$('#login-button').on('click', function () {
 			var credentials = {
 				username: $('#input-username').val(),
 				password: $('#input-password').val()
