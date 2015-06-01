@@ -3,7 +3,7 @@
 		{{errorMessage}}
 	</div>
 	
-	<table class="table table-bordered" style = "width='50%'">
+	<table width="400" class="table-bordered">
         <tr>
             <td><label>Nazwa:</label></td>
    			<td>{{vm.data.name}}</td>
@@ -32,7 +32,7 @@
     </table>	
 	
 	<div class = 'content'>
-	    <table class="table table-hover table-bordered">
+	    <table class="table table-hover table-striped">
 	    	<thead>
 	    		<tr>
 	    			<th>Numer dnia</th>
@@ -40,7 +40,12 @@
 	        </thead>
 	        <tbody>
 		        <tr ng-repeat="day in vm.data.trainingDays">
-		            <td>{{day.number}}</td>
+		            <td>{{day.dayNr}}</td>
+		            <td>
+		            	<button class="btn btn-success" ng-click="vm.expand($index)">
+							Rozwiñ
+						</button>
+		            </td>
 	    			<td><a href="#/plan/{{day.id}}">Poka¿ trening</a></td>
 		        </tr>
 	        </tbody>

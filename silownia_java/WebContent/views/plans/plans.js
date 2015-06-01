@@ -20,6 +20,7 @@
 		vm.active = active;
 		vm.nonactive = nonactive;
 		vm.search = search;
+		vm.showTraining = showTraining;
 		
 		$scope.errorMessage = false;
 		
@@ -27,7 +28,7 @@
 		
 		// ----------------- implementation --------------------------
 		function active(){
-			$http.get('./rest/plan/getPlans?byXXX=1&value=' + vm.user.id +'&active=1&short=true')
+			$http.get('./rest/plan/getUsersPlans?userId=' + vm.user.id +'&limit=0&active=1&short=true')
 			.success(function(d){
 				vm.data = d;
 				console.log("Activer user plans");
@@ -35,7 +36,7 @@
 		}
 		
 		function nonactive(){
-			$http.get('./rest/plan/getPlans?byXXX=1&value=' + vm.user.id +'&active=0&short=true')
+			$http.get('./rest/plan/getUsersPlans?userId=' + vm.user.id +'&limit=0&active=0&short=true')
 			.success(function(d){
 				vm.data = d;
 				console.log("Nonactive user plans");
@@ -44,6 +45,11 @@
 		
 		function search(){
 			console.log("Search");
+		}
+		
+		function showTraining(id){
+			$location.path("/plan/" + id);
+			console.log("plan" + id);
 		}
 	}
 })();
