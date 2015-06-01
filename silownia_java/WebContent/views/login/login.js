@@ -5,24 +5,16 @@
 		.config(['$routeProvider', function($routeProvider) {
 			$routeProvider.when('/login', {
 			templateUrl: 'views/login/login.html',
-			controller: 'LoginController',
-			controllerAs: 'vm' 
+			controller: 'LoginController'
 		});
 		}])
 		.controller('LoginController', LoginController);
 
 	LoginController.$inject = ['$scope', '$rootScope', 'AuthService', 'UserService', '$location'];
-
 	function LoginController($scope, $rootScope, AuthService, UserService, $location){
-	
-
 		$scope.errorMessage = false;
-		
-		var vm = this;
-		
-		
 
-		$('#login-button').on('click', function () {
+		$('#submit-button').on('click', function () {
 			var credentials = {
 				username: $('#input-username').val(),
 				password: $('#input-password').val()
@@ -42,15 +34,10 @@
 				}
 				else{
 					$scope.errorMessage = true;
+					$
 					console.log('niepoprawne logowanie');
 				}	
 			});
-		});
-		
-		$('#register-button').on('click',function(){
-			$location.url('/register');
-			$scope.$apply();
-			console.log('Redirect to register');
 		});
 	}
 })();
