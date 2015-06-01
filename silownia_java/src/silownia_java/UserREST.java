@@ -24,7 +24,7 @@ public class UserREST {
     @Path("/info")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
-    // Query parameters are parameters: http://localhost/<appln-folder-name>/login/dologin?username=abc&password=xyz
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/user/info?userId=1
     public User userInfo(@QueryParam("userId") int uId) throws SQLException{
     //    String response = "";
        // User_dao.getUser(uId);

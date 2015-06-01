@@ -25,13 +25,51 @@ public class TrainingPlanREST {
     @Path("/getPlans")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
-    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlans?byXXX=1&value=1&active=2&short=false
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlans?byXXX=1&value=1&limit=2&active=2&short=true
 	// Parametr byXXX zgodny z klasa ConstanstDAO, value to wartosc np. id, powyzszy przyklad wyszukuje po id=1, nie wazne czy aktywne czy nie, active=0->nieaktywne, active=1->aktywne, acitve>1->obojetnie
     // parametr short dodany w celu wyswietlania skroconego treningu 
     
-    public ArrayList<TrainingPlan> AllTrainingPlans(@QueryParam("byXXX") int byXXX, @QueryParam("value") int value, @QueryParam("active") int active,@QueryParam("short") boolean short_version) throws SQLException{
+    public ArrayList<TrainingPlan> AllTrainingPlans(@QueryParam("byXXX") int byXXX, @QueryParam("value") int value, @QueryParam("limit") int limit, @QueryParam("active") int active,@QueryParam("short") boolean short_version) throws SQLException{
 		
-		return UserTrainingDAO.getTrainingPlans(byXXX,value,active,short_version);
+		return UserTrainingDAO.getTrainingPlans(byXXX,value,limit,short_version);
+	
+	}
+	
+	@GET
+    @Path("/getOwnerPlans")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getOwnerPlans?ownerId=1&limit=1&short=true
+    public ArrayList<TrainingPlan> OwnerTrainingPlans(@QueryParam("ownerId") int ownerId, @QueryParam("limit") int limit,@QueryParam("short") boolean short_version) throws SQLException{
+		
+		return UserTrainingDAO.getOwnerPlans(ownerId, limit, short_version);
+	
+	}
+	
+	@GET
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/getByCategory")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getByCategory?catId=1&limit=1&short=true 
+    public ArrayList<TrainingPlan> CategoryTrainingPlans(@QueryParam("catId") int catId, @QueryParam("limit") int limit,@QueryParam("short") boolean short_version) throws SQLException{
+		
+		return UserTrainingDAO.getPlansByCat(catId, limit, short_version);
+	
+	}
+	
+	@GET
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/getUsersPlans")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlans?byXXX=1&value=1&limit=2&active=2&short=true
+	// Parametr byXXX zgodny z klasa ConstanstDAO, value to wartosc np. id, powyzszy przyklad wyszukuje po id=1, nie wazne czy aktywne czy nie, active=0->nieaktywne, active=1->aktywne, acitve>1->obojetnie
+    // parametr short dodany w celu wyswietlania skroconego treningu 
+    
+    public ArrayList<TrainingPlan> UsersTrainingPlans(@QueryParam("userId") int userId, @QueryParam("limit") int limit, @QueryParam("active") int active,@QueryParam("short") boolean short_version) throws SQLException{
+		
+		return UserTrainingDAO.getUsersPlans(userId,limit,active,short_version);
 	
 	}
 	
