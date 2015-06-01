@@ -7,6 +7,7 @@
 		'gym.auth',
 		'gym.register',
 		'gym.home',
+		'gym.single.plan',
 		'gym.plans'])
 	
 		.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {

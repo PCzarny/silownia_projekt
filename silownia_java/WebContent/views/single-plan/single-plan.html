@@ -1,0 +1,50 @@
+<div>
+	<div ng-show="errorMessage" class="alert alert-danger" role="alert">
+		{{errorMessage}}
+	</div>
+	
+	<table class="table table-bordered" style = "width='50%'">
+        <tr>
+            <td><label>Nazwa:</label></td>
+   			<td>{{vm.data.name}}</td>
+        </tr>
+        <tr>
+            <td><label>Data rozpoczêcia:</label></td>
+   			<td>{{vm.data.start_time}}</td>
+        </tr>
+        <tr>
+            <td><label>Aktualny dzieñ:</label></td>
+   			<td>{{vm.data.current_day}}</td>
+        </tr>
+        <tr>
+            <td><label>D³ugoœæ:</label></td>
+   			<td>{{vm.data.period}} dni</td>
+   			<!--  {{vm.data.period == 1?dzieñ:dni}} -->
+        </tr>
+        <tr>
+            <td><label>Twórca:</label></td>
+   			<td>{{vm.data.owner}} </td>
+        </tr>
+        <tr>
+            <td><label>Kategoria:</label></td>
+   			<td>{{vm.data.categoryName}}</td>
+        </tr>
+    </table>	
+	
+	<div class = 'content'>
+	    <table class="table table-hover table-bordered">
+	    	<thead>
+	    		<tr>
+	    			<th>Numer dnia</th>
+	    		</tr>
+	        </thead>
+	        <tbody>
+		        <tr ng-repeat="day in vm.data.trainingDays">
+		            <td>{{day.number}}</td>
+	    			<td><a href="#/plan/{{day.id}}">Poka¿ trening</a></td>
+		        </tr>
+	        </tbody>
+	    </table>
+	
+	
+</div>
