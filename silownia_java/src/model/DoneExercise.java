@@ -1,11 +1,12 @@
 package model;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 public class DoneExercise {
 	
 	private int done_exercise_id ;
-	private Date created_on ;
+	private Timestamp created_on ;
 	private int series; 
 	private int values;
 	private int exercise_id ;
@@ -21,10 +22,10 @@ public class DoneExercise {
 	public void setDone_exercise_id(int done_exercise_id) {
 		this.done_exercise_id = done_exercise_id;
 	}
-	public Date getCreated_on() {
+	public Timestamp getCreated_on() {
 		return created_on;
 	}
-	public void setCreated_on(Date created_on) {
+	public void setCreated_on(Timestamp created_on) {
 		this.created_on = created_on;
 	}
 	public int getSeries() {

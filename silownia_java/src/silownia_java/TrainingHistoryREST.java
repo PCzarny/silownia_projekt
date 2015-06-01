@@ -9,8 +9,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import dao.DoneExerciseDAO;
 import dao.TrainingHistoryDAO;
+import model.DoneExercise;
 import model.TrainingHistory;
 
 
@@ -35,5 +38,20 @@ public class TrainingHistoryREST {
 		
 	}
 	
+	
+	@POST
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/addDoneExercise")
+    // Produces JSON as response
+    @Consumes(MediaType.APPLICATION_JSON) 
+	// http://localhost:8080/silownia_java/rest/trainingHistory/getUserHistory?userId=1
+	// JSON  
+
+	public Response addExercise(DoneExercise doneExercise) throws SQLException{
+		
+		DoneExerciseDAO.addDoneExercise(doneExercise);
+		return Response.status(200).entity("Powodzenie").build();
+		
+	}
 
 }
