@@ -44,9 +44,24 @@ public class UserREST {
     @Consumes(MediaType.APPLICATION_JSON) 
     // Wywo³anie: http://localhost:8080/silownia_java/rest/user/updateProfile
 	//JSON format :{"userId":2,"name":"Micha³","surname":"Sztuka","login":"tracer","password":"haslo","email":"nowy@email","create_on":"2015-04-14"}
-    public Response addPlanRow(User user) throws SQLException{
+    public Response updateProfile(User user) throws SQLException{
 
 		UserDAO.updateProfile(user);
+		
+		return Response.status(200).entity("Powodzenie").build();
+		
+	}
+    
+    @POST
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/registerUser")
+    // Consumes JSON
+    @Consumes(MediaType.APPLICATION_JSON) 
+    // Wywo³anie: http://localhost:8080/silownia_java/rest/user/updateProfile
+	//JSON format :{"userId":2,"name":"Micha³","surname":"Sztuka","login":"tracer","password":"haslo","email":"nowy@email","create_on":"2015-04-14"}
+    public Response registerUser(User user) throws SQLException{
+
+		UserDAO.registerUser(user);
 		
 		return Response.status(200).entity("Powodzenie").build();
 		
