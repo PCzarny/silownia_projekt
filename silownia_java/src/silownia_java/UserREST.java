@@ -66,5 +66,21 @@ public class UserREST {
 		return Response.status(200).entity("Powodzenie").build();
 		
 	}
+    
+    @POST
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/loginUser")
+    // Consumes JSON
+    @Consumes(MediaType.APPLICATION_JSON) 
+    // Wywo³anie: http://localhost:8080/silownia_java/rest/user/updateProfile
+	//JSON format :{"userId":2,"name":"Micha³","surname":"Sztuka","login":"tracer","password":"haslo","email":"nowy@email","create_on":"2015-04-14"}
+    public Response loginUser(User user) throws SQLException{
+
+    	user = UserDAO.login(user.getLogin(), user.getPassword());
+    	if(user.getUserId()>0)
+    		return Response.status(200).entity(user.getLogin()+" "+user.getUserId()).build();
+    	else
+    		return Response.status(403).entity("Brak uzytkownika").build();
+	}
 
 }

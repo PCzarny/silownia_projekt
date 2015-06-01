@@ -187,7 +187,7 @@ public class UserTrainingDAO {
 		            	trainingPlan.setCategoryName(rs.getString(1));
 		            	trainingPlan.setName(rs.getString(6));
 		            	if (short_version!=true)
-		            		trainingPlan.setTrainingDays(TrainingDayDAO.getTrainingDays(rs.getInt(6)));
+		            		trainingPlan.setTrainingDays(TrainingDayDAO.getTrainingDays(rs.getInt(3)));
 		            	plans.add(trainingPlan);
 		            }
 		        } catch (SQLException sqle) {
