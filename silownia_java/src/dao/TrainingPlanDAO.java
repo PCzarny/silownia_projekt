@@ -40,7 +40,7 @@ public class TrainingPlanDAO {
 	    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
 	    	 	ps.setInt(1, planId);
 	    	 	
-
+	    	 		// wyswietl
 	    	 	System.out.println(ps.toString());
 	    	 	ResultSet rs = ps.executeQuery();
 	            while (rs.next()) {
