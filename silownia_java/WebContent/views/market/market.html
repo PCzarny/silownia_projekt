@@ -1,3 +1,61 @@
-<div class = 'content'>
-	<h1>Taki chuj</h1>
+<div>
+	
+	<h1>Wyszukaj interesujace Cie plany</h1>
+	<br></br>
+	<div class="row">
+	  <div class="col-lg-4">
+	    <div class="input-group">
+	    <span class="input-group-addon">Wybierz kategorie: </span>
+	      	<!-- single dropdown -->
+			
+			<select class="chosen" id="category-select" style="width:220px;height:34px;">
+			     <option ng-repeat="cat in vm.categories">{{cat.name}}</option>
+			     <option>any</option>
+			</select>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	  <div class="col-lg-6">
+	    <div class="input-group">
+	    	<span class="input-group-addon">Wpisz nazwe planu: </span>
+	      <input type="text" id="plan-name" class="form-control" aria-label="...">
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	  <div class="col-lg-2">
+		<button class="btn btn-success" ng-click="vm.search()">
+			<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Wyszukaj
+		</button>
+	  </div>
+	</div><!-- /.row -->
+
+	<br></br>
+	
+	
+
+	
+	<div class = 'content'>
+	    <table class="table table-hover table-striped">
+	    	<thead>
+	    		<tr>
+	    			<th>Nazwa treningu</th>
+	    			<th>Kategoria</th>
+	    			<th>Liczba dni</th>
+	    			<th>Tworca</th>
+	    			<th>&nbsp;</th>
+	    		</tr>
+	        </thead>
+	        <tbody>
+		        <tr ng-repeat="plan in vm.data">
+		            <td>{{plan.name}}</td>
+	    			<td>{{plan.categoryName}}</td>
+	    			<td>{{plan.period}}</td>
+	    			<td>{{plan.owner}}</td>
+	    			<td><a href="#/plan/{{plan.training_plan_id}}">
+	    				<button class="btn btn-default btn-ms"><span class="glyphicon glyphicon glyphicon-arrow-right"></span></button>
+	    			</a></td>	    			
+		        </tr>
+	        </tbody>
+	    </table>
+	</div>
+	
+	
 </div>

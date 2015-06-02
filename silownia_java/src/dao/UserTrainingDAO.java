@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.TrainingCategory;
 import model.TrainingPlan;
 import silownia_java.DBConnection;
 
@@ -149,6 +150,72 @@ public class UserTrainingDAO {
 				 return plans;
 			}
 			
+	public static ArrayList<TrainingPlan> getPlansByNameAndCat(String name, String catName, int limit,boolean short_version) throws SQLException{
+		
+		Connection dbConn = null;
+		String a = "%";
+		a+=name;
+		a+="%";
+		name=a;
+		String sql = "SELECT * FROM uniqe_training_plan WHERE name1 LIKE ? ";
+		if(!catName.equals("any"))
+			sql+=" and cat_name = ? ";
+		if(limit!=0)
+			sql+=" LIMIT ?";
+		
+		TrainingPlan trainingPlan = new TrainingPlan(); 
+		ArrayList<TrainingPlan> plans = new ArrayList<TrainingPlan>();
+	     try {
+	    	 try{
+	    		 dbConn = DBConnection.createConnection();
+	             System.out.println(dbConn);
+	            } 
+	    	 	catch (Exception e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	    	 
+	    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+	    	 	
+			    ps.setString(1, name);
+	    	 	if(!catName.equals("any"))
+	    			ps.setString(2, catName);
+	    	 	if(limit!=0 && catName.equals("any"))
+	    	 		ps.setInt(2, limit);
+	    	 	else if(limit!=0)
+	    	 		ps.setInt(3, limit);
+	    	 	
+	    	 	
+	    	 	System.out.println(ps.toString());
+	    	 	ResultSet rs = ps.executeQuery();
+	            while (rs.next()) {
+	            	trainingPlan = new TrainingPlan();
+	            	trainingPlan.setPeriod(rs.getInt(5));
+	            	trainingPlan.setTraining_plan_id(rs.getInt(3));
+	            	trainingPlan.setOwner(rs.getInt(4));  
+	            	trainingPlan.setCategoryId(rs.getInt(2));
+	            	trainingPlan.setCategoryName(rs.getString(1));
+	            	trainingPlan.setName(rs.getString(6));
+	            	if (short_version!=true)
+	            		trainingPlan.setTrainingDays(TrainingDayDAO.getTrainingDays(rs.getInt(6)));
+	            	plans.add(trainingPlan);
+	            }
+	        } catch (SQLException sqle) {
+	            throw sqle;
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	            throw e;
+	        } finally {
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	        }
+		 
+		 return plans;
+	}
 	
 	// Pobieranie planów z tabeli user_has_training_plan po parametrze byXXX zgodnie z ConstantsDAO oraz o wartosci value
 	public static ArrayList<TrainingPlan> getOwnerPlans(int ownerId, int limit,boolean short_version) throws SQLException{
@@ -270,6 +337,51 @@ public class UserTrainingDAO {
 		        }
 			 
 			 return plans;
+		}
+	
+	// Pobieranie planów z tabeli user_has_training_plan po parametrze byXXX zgodnie z ConstantsDAO oraz o wartosci value
+	public static ArrayList<TrainingCategory> getCategories() throws SQLException{
+		
+			Connection dbConn = null;
+			String sql = "SELECT distinct cat_name, training_category_id FROM `uniqe_training_plan`";
+			
+			TrainingCategory category = new TrainingCategory(); 
+			ArrayList<TrainingCategory> categories = new ArrayList<TrainingCategory>();
+		     try {
+		    	 try{
+		    		 dbConn = DBConnection.createConnection();
+		             System.out.println(dbConn);
+		            } 
+		    	 	catch (Exception e) {
+		                // TODO Auto-generated catch block
+		                e.printStackTrace();
+		            }
+		    	 	
+		    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+		    	 	
+		    	 	System.out.println(ps.toString());
+		    	 	ResultSet rs = ps.executeQuery();
+		            while (rs.next()) {
+		            	category = new TrainingCategory();
+		            	category.setName(rs.getString(1));
+		            	category.setId(rs.getInt(2));
+		            	categories.add(category);
+		            }
+		        } catch (SQLException sqle) {
+		            throw sqle;
+		        } catch (Exception e) {
+		            // TODO Auto-generated catch block
+		            if (dbConn != null) {
+		                dbConn.close();
+		            }
+		            throw e;
+		        } finally {
+		            if (dbConn != null) {
+		                dbConn.close();
+		            }
+		        }
+			 
+			 return categories;
 		}
 	
 }
