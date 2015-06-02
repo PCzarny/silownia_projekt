@@ -25,7 +25,7 @@
 	    			<th>Długość treningu</th>
 	    			<th>Aktualny dzień</th>
 	    			<th>Twórca</th>
-	    			<th>Link</th>
+	    			<th>&nbsp;</th>
 	    		</tr>
 	        </thead>
 	        <tbody>
@@ -36,7 +36,9 @@
 	    			<td>{{plan.period}}</td>
 	    			<td>{{plan.current_day}}</td>
 	    			<td>{{plan.owner}}</td>
-	    			<td><a href="#/plan/{{plan.training_plan_id}}">Pokaż trening</a></td>
+	    			<td><a href="#/plan/{{plan.training_plan_id}}">
+	    				<button class="btn btn-default btn-ms"><span class="glyphicon glyphicon glyphicon-arrow-right"></span></button>
+	    			</a></td>	    			
 		        </tr>
 	        </tbody>
 	    </table>

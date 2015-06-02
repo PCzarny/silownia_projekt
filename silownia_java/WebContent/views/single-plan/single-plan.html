@@ -48,7 +48,7 @@
 	
 			    <tbody ng-repeat="day in vm.data.trainingDays">
 			        <tr data-toggle="collapse" data-target="#demo{{$index}}" class="accordion-toggle">
-			            <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+			            <td><button class="btn btn-default btn-ms"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 			           	<td>{{day.dayNr}}</td>
 			           	<td>{{day.exercises.length}}</td>
 			            <td><a href="#/training/{{day.id}}">Trenuj!</a></td>			
@@ -72,7 +72,7 @@
 			              					<td>{{exercise.description}}</td>
 			              					<td>{{exercise.series}}</td>
 			              					<td>{{exercise.repeats}}</td>
-			              					<td>&nbsp;</td>
+			              					<td>&nbsp;</td><!-- Dodaæ link do prezentacji æwiczeñ #/exercise/{{exercise.id}} -->
 			              				</tr>
 			              			</tbody>
 			              		</table>
