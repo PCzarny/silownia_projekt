@@ -22,7 +22,7 @@
 			vm.data=d;
 			console.log(d);
 		})
-		
+		// pobieranie kategorii
 		$http.get('./rest/plan/getCategories')
 		.success(function(d){
 			vm.categories=d;
