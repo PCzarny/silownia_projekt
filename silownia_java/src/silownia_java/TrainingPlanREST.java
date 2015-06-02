@@ -13,6 +13,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import model.TrainingCategory;
 import model.TrainingPlan;
 import dao.TrainingPlanDAO;
 import dao.UserTrainingDAO;
@@ -83,6 +84,32 @@ public class TrainingPlanREST {
     public TrainingPlan getTrainingPlan(@QueryParam("planId") int planId, @QueryParam("shortVersion") Boolean shortVersion) throws SQLException{
 		
 		return TrainingPlanDAO.getTrainingPlan(planId, shortVersion);
+	
+	}
+	
+	@GET
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/getPlansByNameAndCat")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlansByNameAndCat?name=Trening brzucha&catName=Silowy&limit=0&shortVersion=true
+	// Zwraca plan o konkretnym ID
+    public ArrayList<TrainingPlan> getPlansByName(@QueryParam("name") String name,@QueryParam("catName") String catName, @QueryParam("limit") int limit, @QueryParam("shortVersion") Boolean shortVersion) throws SQLException{
+		
+		return UserTrainingDAO.getPlansByNameAndCat(name,catName, limit, shortVersion);
+	
+	}
+	
+	@GET
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/getCategories")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+    // Query parameters are parameters: http://localhost:8080/silownia_java/rest/plan/getPlansByName?name=Trening brzucha&limit=0&shortVersion=true
+	// Zwraca plan o konkretnym ID
+    public ArrayList<TrainingCategory> getCategories() throws SQLException{
+		
+		return UserTrainingDAO.getCategories();
 	
 	}
 	
