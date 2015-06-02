@@ -27,7 +27,7 @@ public class LoginREST {
 	    	User user = new User(); 
 	    	user = UserDAO.login(loginUser);
 	    	if(user.getUserId()>0)
-	    		return Response.status(200).entity(user.getLogin()+":"+user.getUserId()).build();
+	    		return Response.status(200).entity("{\"login\":\""+user.getLogin()+"\",\"id\":\""+user.getUserId()+"\"}").build();
 	    	else
 	    		return Response.status(403).entity("Brak uzytkownika").build();
 		}
