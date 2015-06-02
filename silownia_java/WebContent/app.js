@@ -9,7 +9,9 @@
 		'gym.home',
 		'gym.single.plan',
 		'gym.plans',
+		'gym.exercises',
 		'gym.market'])
+
 	
 		.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 			//$routeProvider.otherwise({ redirectTo: '/login' });
