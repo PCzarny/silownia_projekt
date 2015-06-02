@@ -13,12 +13,12 @@
 				$rootScope.$broadcast('SetUser');
 				
 				if(user){
-					$(document).find("known").show();
-					$(document).find("unknown").hide();
+					$(document).find(".known").show();
+					$(document).find(".unknown").hide();
 				}
 				else{
-					$(document).find("known").hide();
-					$(document).find("unknown").show();
+					$(document).find(".known").hide();
+					$(document).find(".unknown").show();
 				}
 					
 			};
