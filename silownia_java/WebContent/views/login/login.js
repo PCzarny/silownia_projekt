@@ -13,11 +13,13 @@
 
 	LoginController.$inject = ['$scope', '$rootScope', 'AuthService', 'UserService', '$location', '$http'];
 	function LoginController($scope, $rootScope, AuthService, UserService, $location, $http) {
-		$scope.errorMessage = false;
 		
 		var vm = this;
 		
-		UserService.setUser(undefined);
+		$scope.$on('$routeChangeSuccess', function () {
+			$scope.errorMessage = false;
+			UserService.setUser(undefined);
+		});
 		
 		$('#login-button').on('click', function () {
 			

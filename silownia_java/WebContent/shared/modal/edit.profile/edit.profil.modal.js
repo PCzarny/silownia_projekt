@@ -22,17 +22,11 @@
 	function ProfilEditModalLinkFunction($scope, $element, $attrs, $ctrl){
 		console.log("Board modal modal - link function");
 		
-		$scope.$on('add-company', addMode );
-		
-		function addMode (event, args){
-			$scope.vm.getAddData( args );
-			$element.modal('show');
-		}
-		$scope.$on('edit-company', editMode );
+		$scope.$on('edit-profile', editMode );
 		
 		$element.on('hidden.bs.modal', function (e) {
 			$scope.vm.cancel();
-			console.log("Board edit modal - hidden");
+			console.log("profile edit modal - hidden");
 		})
 		
 		function editMode (event, args){
@@ -40,10 +34,9 @@
 			$element.modal('show');
 		}
 	}
-	BoardEditModalController.$inject = ['$scope', '$location', 'BoardService']
-	function BoardEditModalController($scope, $location, BoardService){
+	ProfilEditModalController.$inject = ['$scope', '$location']
+	function ProfilEditModalController($scope, $location){
 		var vm = this;
-		vm.countries = {};
 		vm.unsaved = {};
 		
 		vm.getEditData = getEditData;

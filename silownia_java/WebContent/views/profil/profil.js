@@ -18,15 +18,21 @@
 
 		var vm = this;
 		vm.user = UserService.getUser();
-		vm.planId = $routeParams['id'];
+		vm.id = $routeParams['id'];
 		
-		$http.get('./rest/user/info?userId=' + vm.planId)
+		vm.editUser = editUser;
+		
+		$http.get('./rest/user/info?userId=' + vm.id)
 			.success(function(d){
 				vm.data = d;
-				console.log("Plan id " + vm.planId);
+				console.log("User id " + vm.id);
 				console.log(vm.data);
 			});
 		
-		// --- implementation ------------------------		
+		// --- implementation ------------------------
+		
+		function editUser(){
+			console.log("Edit user " + vm.id)
+		}
 	}
 })();
