@@ -11,6 +11,7 @@ import com.mysql.jdbc.PreparedStatement;
 import silownia_java.DBConnection;
 import model.TrainingPlan;
 import model.User;
+import model.UserLogin;
 
 public class UserDAO {
 
@@ -179,7 +180,7 @@ public class UserDAO {
 	        }		
 	}
 
-	public static User login(String login, String password) throws SQLException{
+	public static User login(UserLogin loginUser) throws SQLException{
 		 Connection dbConn = null;
 		 
 		 User user = new User();
@@ -192,7 +193,7 @@ public class UserDAO {
 	                e.printStackTrace();
 	            }
 	            Statement stmt = dbConn.createStatement();
-	            String query = "SELECT * FROM user WHERE login = '" + login+"' and password = '"+password+"'";
+	            String query = "SELECT * FROM user WHERE login = '" + loginUser.getLogin()+"' and password = '"+loginUser.getPassword()+"'";
 	            System.out.println(query);
 	            ResultSet rs = stmt.executeQuery(query);
 	            while (rs.next()) {
