@@ -16,26 +16,48 @@
 		
 		console.log(AuthService.isAuthenticated());
 		
+		$.fn.serializeObject = function()
+		{
+		    var o = {};
+		    var a = this.serializeArray();
+		    $.each(a, function() {
+		        if (o[this.name] !== undefined) {
+		            if (!o[this.name].push) {
+		                o[this.name] = [o[this.name]];
+		            }
+		            o[this.name].push(this.value || '');
+		        } else {
+		            o[this.name] = this.value || '';
+		        }
+		    });
+		    return o;
+		};
 		
 		$('#submit-button').on('click', function () {
 			if ( $('#input-password').val() !== $('#input-password-rep').val() ){
 				$scope.errorMessage = 'Wprowadzono różne hasła';
 				return;
 			}
-				
-			var credentials = {
-				username: $('#input-username').val(),
-				name: $('#input-name').val(),
-				surname: $('#input-surname').val(),
-				email: $('#input-email').val(),
-				password: $('#input-password').val()
-			};
 			
-			$http.get('./rest/register/doregister?username=' + credentials.username + '&password=' + credentials.password + '&email=' + credentials.email + '&name=' + credentials.name + '&surname=' + credentials.surname)
-			
-			// Register service add user
-			$location.url('/login');
-			console.log('Poprawnie zarejestrowanie');
+			var credencials = ($(".form-register").serializeObject());
+			console.log("Wysylam do resta");
+			console.log(credencials);
+			credencials.userId = null;
+			credencials.create_on = null;
+			delete credencials["password-rep"];
+			console.log(credencials);
+
+
+			$http.post('./rest/user/registerUser', credencials)
+				.success(function(data, status, headers, config) {
+					console.log("Poprawna rejestracja");
+//					//console.log(credencials);
+//					//$location.url('/login');
+				})
+			  	.error(function(data, status, headers, config) {
+				    //console.log("Błąd rejestracji");
+//				    $scope.errorMessage = 'Błędna rejestracja';
+				  });
 		});
 	}
 })();

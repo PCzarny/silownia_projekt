@@ -3,7 +3,7 @@
 	<head>
 		<title>Gym Challange Project</title>
 		<meta content='Piotr Czarny' name='author'>
-		<meta charset="UTF-8">
+		<meta charset="iso-8859-2">
 		
 	<!-- BEGIN LIB CSS-->
 	    <link href="libs/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -30,14 +30,14 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div ng-show = 'AuthService.isAuthenticated()' class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav known">
 					<li><a href="#/home">Home <span class="sr-only">(current)</span></a></li>
 					<li><a href="#/diet">Dieta</a></li>
 					<li><a href="#/plans">Plan treningowy</a></li>
 					<li><a href="#/stat">Statystyki</a></li>
 					<li class="dropdown">
-			         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Market <span class="caret"></span></a>
+			         <a class="dropdown-toggle" data-toggle="dropdown">Market <span class="caret"></span></a>
 			         <ul class="dropdown-menu" role="menu">
 			           <li><a href="#/market">Plany treningowe</a></li>
 			           <li><a href="#">Diety</a></li>
@@ -46,9 +46,12 @@
 			         </ul>
 			       </li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right unknown">
 					<li><a href="#/login">Zaloguj</a></li>
 					<li><a href="#/register">Zarejestruj</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right known">
+					<li><a href="#/login">Wyloguj</a></li>
 				</ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
@@ -73,7 +76,12 @@
 		<script src='views/plans/plans.js'></script>
 		<script src='views/single-plan/single-plan.js'></script>
 		<script src='views/home/home.js'></script>
+
+		<script src='views/exercises/exercises.js'></script>
+
 		<script src='views/market/market.js'></script>
+		<script src='views/profil/profil.js'></script>
+
 
 		<script src='shared/auth/auth.module.js'></script>
 		<script src='shared/auth/user.js'></script>
