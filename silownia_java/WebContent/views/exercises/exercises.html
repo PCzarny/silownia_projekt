@@ -1,0 +1,61 @@
+<div>
+	<div ng-show="errorMessage" class="alert alert-danger" role="alert">
+		{{errorMessage}}
+	</div>
+	<button class="btn btn-success">
+		Moje æwiczenia
+	</button>
+	
+	<button class="btn btn-success" ">
+		Ulubione æwiczenia
+	</button>
+	<button class="btn btn-success">
+		Wszystkie æwiczenia
+	</button>
+	
+	<div class="container">
+		<div class="col-md-12 table-responsive">
+				<table class="table table-bordered table-hover table-sortable" id="tab_logic">
+					<thead>
+						<tr >
+							<th class="text-center">
+								Nazwa æwiczenia
+							</th>
+							<th class="text-center">
+								Opis
+							</th>
+							
+	        				<th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="exercise in vm.data">
+							<td>{{exercise.name}}</td>
+							<td>{{exercise.description}}</td>
+							<td></td>
+					
+					
+					
+					
+					</tbody>
+						
+					
+					
+				
+				
+				</table>
+		
+		
+		
+		</div>
+	
+	</div>
+	
+	
+	
+	
+	
+
+
+</div>	
