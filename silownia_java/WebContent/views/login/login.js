@@ -18,30 +18,9 @@
 		var vm = this;
 		
 		UserService.setUser(undefined);
-
+		
 		$('#login-button').on('click', function () {
-//			var credentials = {
-//				username: $('#input-username').val(),
-//				password: $('#input-password').val()
-//			};
-//
-//			AuthService.login(credentials).then(function (data) {
-//				console.log(data);
-//				if ( data.status == true){
-//					var user = {
-//							id : 1,
-//							username: credentials.username
-//						}
-//					UserService.setUser(user);
-//					$rootScope.$broadcast('SetUser');
-//					$location.url('/home');
-//					console.log('Poprawnie zalogowano: ' + user.username);
-//				}
-//				else{
-//					$scope.errorMessage = 'Wrong username or password';
-//					console.log('niepoprawne logowanie');
-//				}	
-//			});
+			
 			$.fn.serializeObject = function()
 			{
 			    var o = {};
@@ -61,21 +40,22 @@
 			var credencials = ($(".form-login").serializeObject());
 			console.log("Wysylam do resta");
 			console.log(credencials);
-
 			
-			
-			$http.post('./rest/login/auth', credencials).
-			  success(function(data, status, headers, config) {
-				  console.log("Odebralem");
-			    console.log(status);
-			    console.log(data);
-				  UserService.setUser(data);
-			  }).
-			  error(function(data, status, headers, config) {
-			    console.log("Błąd");
-			    console.log(status);
-			  });
-			//var object = $.extend({}, credencials, "userId":null,"name":null,"surname":null,"email":null,"create_on":null});
+			$http.post('./rest/login/auth', credencials)
+				.success(function(data, status, headers, config) {
+					console.log("Odebralem");
+				    console.log(status);
+				    console.log(data);
+				    UserService.setUser(data);
+				    console.log(AuthService.isAuthenticated());
+				    $rootScope.$broadcast('SetUser');
+					$location.url('/home');
+				})
+			  	.error(function(data, status, headers, config) {
+				    console.log("Błąd");
+				    $scope.errorMessage = 'Wrong username or password';
+				    console.log(status);
+				  });
 		});
 		
 		$('#register-button').on('click',function(){

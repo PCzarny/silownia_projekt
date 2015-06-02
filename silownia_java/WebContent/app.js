@@ -12,6 +12,6 @@
 		'gym.market'])
 	
 		.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
-			//$routeProvider.otherwise({ redirectTo: '/login' });
+			$routeProvider.otherwise({ redirectTo: '/login' });
 		}])
 })();

@@ -19,7 +19,6 @@
 		var vm = this;
 		vm.user = UserService.getUser();
 		vm.planId = $routeParams['plan'];
-		vm.expand = expand;
 		
 		$http.get('./rest/plan/getPlanByID?planId='+ vm.planId +'&shortVersion=false')
 			.success(function(d){
@@ -28,33 +27,6 @@
 				console.log(vm.data);
 			});
 		
-		// --- implementation ------------------------
-		
-		function expand(i) {
-			console.log("Expand");
-			
-			console.log(i);
-			/*
-            if ($(this).data('name') == 'show') {
-                $("#sidebar").animate({
-                    width: '0%'
-                }).hide()
-                $("#map").animate({
-                    width: '100%'
-                });
-                $(this).data('name', 'hide')
-            } else {
-                $("#sidebar").animate({
-                    width: '19%'
-                }).show()
-                $("#map").animate({
-                    width: '80%'
-                });
-                $(this).data('name', 'show')
-            }*/
-        }
-		
-		
-		
+		// --- implementation ------------------------		
 	}
 })();
