@@ -10,6 +10,7 @@
 		'gym.single.plan',
 		'gym.plans',
 		'gym.exercises',
+		'gym.profil',
 		'gym.market'])
 
 	

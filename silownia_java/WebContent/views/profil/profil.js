@@ -18,9 +18,9 @@
 
 		var vm = this;
 		vm.user = UserService.getUser();
-		vm.planId = $routeParams['plan'];
+		vm.planId = $routeParams['id'];
 		
-		$http.get('./rest/plan/getPlanByID?planId='+ vm.planId +'&shortVersion=false')
+		$http.get('./rest/user/info?userId=' + vm.planId)
 			.success(function(d){
 				vm.data = d;
 				console.log("Plan id " + vm.planId);

@@ -1,0 +1,35 @@
+<div>
+	<div ng-show="errorMessage" class="alert alert-danger" role="alert">
+		{{errorMessage}}
+	</div>
+
+	<div class = 'content'>
+		    	
+        <div class="panel panel-default">
+        	<div class="panel-heading">
+            	<table width="400">
+			        <tr>
+			            <td><label>Login:</label></td>
+			   			<td>{{vm.data.login}}</td>
+			        </tr>
+			        <tr>
+			            <td><label>Imiê:</label></td>
+			   			<td>{{vm.data.name}}</td>
+			        </tr>
+			        <tr>
+			            <td><label>Nazwisko:</label></td>
+			   			<td>{{vm.data.surname}}</td>
+			        </tr>
+			        <tr>
+			            <td><label>email:</label></td>
+			   			<td>{{vm.data.email}}</td>
+			        </tr>
+			        <tr>
+			            <td><label>Utworzono</label></td>
+			   			<td>{{vm.data.create_on}} </td>
+			        </tr>
+			    </table>	
+			</div>
+		</div>
+	</div> 
+</div>
