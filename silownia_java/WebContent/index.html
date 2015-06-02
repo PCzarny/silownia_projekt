@@ -15,7 +15,6 @@
 	
 	</head>
 	<body ng-app='gym.project'>
-		
 	<!--  BEGIN NAVBAR -->
 		<nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -37,6 +36,15 @@
 					<li><a href="#/diet">Dieta</a></li>
 					<li><a href="#/plans">Plan treningowy</a></li>
 					<li><a href="#/stat">Statystyki</a></li>
+					<li class="dropdown">
+			         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Market <span class="caret"></span></a>
+			         <ul class="dropdown-menu" role="menu">
+			           <li><a href="#/market">Plany treningowe</a></li>
+			           <li><a href="#">Diety</a></li>
+			           <li class="divider"></li>
+			           <li><a href="#">Dodatki</a></li>
+			         </ul>
+			       </li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#/login">Zaloguj</a></li>
@@ -45,7 +53,6 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-	
 	<!-- END NAVBAR -->	
 		
 	<!-- BEGIN PAGE CONTENT -->
@@ -66,6 +73,7 @@
 		<script src='views/plans/plans.js'></script>
 		<script src='views/single-plan/single-plan.js'></script>
 		<script src='views/home/home.js'></script>
+		<script src='views/market/market.js'></script>
 
 		<script src='shared/auth/auth.module.js'></script>
 		<script src='shared/auth/user.js'></script>

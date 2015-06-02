@@ -10,6 +10,7 @@
 
 			service.setUser = function (newUser) {
 				console.log(newUser);
+				console.log("cos doszlo");
 				user = newUser;
 			};
 

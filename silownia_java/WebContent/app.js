@@ -8,7 +8,8 @@
 		'gym.register',
 		'gym.home',
 		'gym.single.plan',
-		'gym.plans'])
+		'gym.plans',
+		'gym.market'])
 	
 		.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
 			//$routeProvider.otherwise({ redirectTo: '/login' });
