@@ -12,36 +12,38 @@
 		.controller('MarketController',MarketController);
 	
 	MarketController.$inject = ['$scope', '$location', '$http', 'UserService'];
-	function MarketController($scoper, $location, $http, UserService)
+	function MarketController($scope, $location, $http, UserService)
 	{
 		var vm = this;
 		vm.planes;
 		vm.mainPlans = mainPlans;
 		vm.search = search;
+		vm.check = check;
 		vm.podmien=podmien;
 		vm.asign = asign;
 		vm.remove = remove;
 		vm.user = UserService.getUser();
-		mainPlans();
 		
-		$http.get('./rest/plan/getPlansByNameAndCat?name=&catName=any&limit=0&shortVersion=true')
+		/*$http.get('./rest/plan/getPlansByNameAndCat?name=&catName=any&limit=0&shortVersion=true')
 		.success(function(d){
 			vm.data=d;
 			for(var k in vm.data)
 			{
 				console.log("vm.data.owner: "+k);
-				podmien(k);
-				check(k);
+				vm.podmien(k);
+				vm.check(k);
 			
 			}
 			console.log(d);
-		})
+		})*/
 		// pobieranie kategorii
 		$http.get('./rest/plan/getCategories')
 		.success(function(d){
 			vm.categories=d;
 			console.log(d);
 		})
+		vm.mainPlans();
+		vm.search();
 		
 		function asign(butId){
 			var today = new Date();
@@ -66,9 +68,8 @@
 			$http.post('./rest/plan/asignPlan',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
+					vm.mainPlans();
 				});
-			vm.mainPlans();
-			vm.search();
 				
 		}
 		
@@ -95,9 +96,9 @@
 			$http.post('./rest/plan/removePlanFromUser',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
+					vm.mainPlans();
 				});
-			vm.mainPlans();
-			vm.search();
+			
 		}
 		
 		function mainPlans(){
@@ -105,10 +106,15 @@
 			.success(function(d){
 				vm.planes = d;
 				console.log("Update plans");
+				for(var k in vm.data)
+				{
+					vm.check(k);
+				}
 			});
 		}
 		
 		function check(k){
+			vm.data[k].current_day = 0;
 			for(var i in vm.planes)
 				{
 					console.log("Porownuje "+vm.planes[i].training_plan_id+" z "+vm.data[k].training_plan_id);
@@ -117,9 +123,8 @@
 							vm.data[k].current_day = 1;
 							break;
 						}
-					else
-						vm.data[k].current_day = 0;
 				}
+				console.log("Plan o id "+k+" jest w moich : "+vm.data[k].current_day);
 			}
 		
 		function podmien(k){
@@ -137,17 +142,17 @@
 			$http.get('./rest/plan/getPlansByNameAndCat?name='+name+'&catName='+cat+'&limit=0&shortVersion=true')
 			.success(function(d){
 				vm.data=d;
-				
+				console.log(d);
 				for(var k in vm.data)
 					{
 						console.log("vm.data.owner: "+k);
-						podmien(k);
-						check(k);
-					
+						vm.podmien(k);
+						vm.check(k);
 					}
 				console.log("Szukam planow z "+name+" w nazwie z kategorii "+cat);
-				console.log(d);
 			})
+
+			
 		}
 		
 	}
