@@ -1,6 +1,7 @@
 package silownia_java;
 
 import java.sql.SQLException;
+import dao.DimensionUnitDAO;
 import java.util.ArrayList;
 
 import javax.ws.rs.Consumes;
@@ -25,8 +26,6 @@ public class DimensionREST {
     @Produces(MediaType.APPLICATION_JSON) 
     // Query parameters are parameters: http://localhost/<appln-folder-name>/login/dologin?username=abc&password=xyz
     public Dimension getLastDimension(@QueryParam("userId") int uId,@QueryParam("dimensionId") int dimensionId) throws SQLException{
-    
- 
     	return DimensionDAO.getLastDimension(uId, dimensionId);       
     }
  
@@ -45,6 +44,19 @@ public class DimensionREST {
     	return DimensionDAO.getAllDimension(uId, dimensionId);       
     }
 	
+ // HTTP Get Method
+    @GET
+    // Path: 
+    @Path("/dimensionUnit")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+  
+    public ArrayList<DimensionUnit> getAllDimension()  throws SQLException{
+		
+    	return DimensionUnitDAO.getAllUnit();
+
+    	
+    }
 	
     
  
@@ -61,7 +73,7 @@ public class DimensionREST {
     	
     	DimensionDAO.addUserDimmension(dimension);
     	
-    	return Response.status(200).entity("Powodzenie").build();
+    	return Response.status(200).entity("{\"status\":\"Success\"}").build();
     }
     
     

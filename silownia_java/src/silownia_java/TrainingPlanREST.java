@@ -125,7 +125,7 @@ public class TrainingPlanREST {
 		
 
 		TrainingPlanDAO.addTreningPlanRow(plan);
-	       return Response.status(200).entity("Powodzenie").build();
+	       return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 	
@@ -140,7 +140,7 @@ public class TrainingPlanREST {
 		
 
 		UserTrainingDAO.addTrainingPlanToUser(plan);
-	    return Response.status(200).entity("Powodzenie").build();
+	    return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 	
@@ -155,7 +155,7 @@ public class TrainingPlanREST {
 		
 
 		UserTrainingDAO.deleteTrainingPlanToUser(plan);
-	    return Response.status(200).entity("Powodzenie").build();
+	    return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 	

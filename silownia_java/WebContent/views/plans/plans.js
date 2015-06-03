@@ -21,6 +21,7 @@
 		vm.nonactive = nonactive;
 		vm.search = search;
 		vm.showTraining = showTraining;
+		vm.add =add;
 		
 		$scope.errorMessage = false;
 		
@@ -50,6 +51,9 @@
 		function showTraining(id){
 			$location.path("/plan/" + id);
 			console.log("plan" + id);
+		}
+		function add(){
+			
 		}
 	}
 })();

@@ -45,7 +45,7 @@ public class TrainingDayREST {
 		System.out.println("ok");
 		TrainingDayDAO.addTrainingDay(trainingDay);
 		
-		return Response.status(200).entity("Powodzenie").build();
+		return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 	

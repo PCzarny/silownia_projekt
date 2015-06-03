@@ -71,7 +71,8 @@
 				
 				$http.post('./rest/exercise/addExercise', exer)
 				.success(function(data, status, headers, config) {
-					console.log("Poprawna rejestracja");
+					console.log("Poprawnie dodano");
+					
 //					//console.log(credencials);
 //					//$location.url('/login');
 				})
@@ -80,17 +81,17 @@
 //				    $scope.errorMessage = 'Błędna rejestracja';
 				  });
 				
+				getUserExercises();
+				
+				
 				
 			}
 			
 			function addExercise(){
 				console.log("addExercise");
 				
-				
 				$(".content").hide();
 				$(".add").show();
-				
-				
 				
 				
 			}
@@ -107,8 +108,7 @@
 			}
 			
 			function getAllExercises(){
-				$(".content").show();
-				$(".add").hide();
+				
 				$http.get('./rest/exercise/AllExercises')
 				.success(function(d){
 					vm.data = d;

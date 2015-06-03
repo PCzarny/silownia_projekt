@@ -50,7 +50,7 @@ public class TrainingHistoryREST {
 	public Response addExercise(DoneExercise doneExercise) throws SQLException{
 		
 		DoneExerciseDAO.addDoneExercise(doneExercise);
-		return Response.status(200).entity("Powodzenie").build();
+		return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 

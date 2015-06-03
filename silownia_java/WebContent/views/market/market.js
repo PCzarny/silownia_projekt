@@ -68,8 +68,16 @@
 			$http.post('./rest/plan/asignPlan',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
+<<<<<<< HEAD
 					vm.mainPlans();
 				});
+=======
+				})
+				.error(function(){});
+			vm.mainPlans();
+			vm.search();
+			$scope.$apply();
+>>>>>>> 9286a1adf2cd08a00a2198d18b9534c89b7fa779
 				
 		}
 		
@@ -96,9 +104,16 @@
 			$http.post('./rest/plan/removePlanFromUser',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
+<<<<<<< HEAD
 					vm.mainPlans();
 				});
 			
+=======
+				})
+				.error(function(){});
+			vm.mainPlans();
+			vm.search();
+>>>>>>> 9286a1adf2cd08a00a2198d18b9534c89b7fa779
 		}
 		
 		function mainPlans(){
@@ -119,10 +134,17 @@
 				{
 					console.log("Porownuje "+vm.planes[i].training_plan_id+" z "+vm.data[k].training_plan_id);
 					if(vm.planes[i].training_plan_id == vm.data[k].training_plan_id)
+<<<<<<< HEAD
 						{
 							vm.data[k].current_day = 1;
 							break;
 						}
+=======
+					{
+						vm.data[k].current_day = 1;	
+						$scope.$apply;
+					}
+>>>>>>> 9286a1adf2cd08a00a2198d18b9534c89b7fa779
 				}
 				console.log("Plan o id "+k+" jest w moich : "+vm.data[k].current_day);
 			}
