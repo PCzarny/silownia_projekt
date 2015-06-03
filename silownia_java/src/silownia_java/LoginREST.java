@@ -29,7 +29,7 @@ public class LoginREST {
 	    	if(user.getUserId()>0)
 	    		return Response.status(200).entity("{\"login\":\""+user.getLogin()+"\",\"id\":\""+user.getUserId()+"\"}").build();
 	    	else
-	    		return Response.status(403).entity("Brak uzytkownika").build();
+	    		return Response.status(403).entity("{\"status\":\"B³¹d logowania\"}").build();
 		}
 	
 	

@@ -73,7 +73,7 @@ public class DimensionREST {
     	
     	DimensionDAO.addUserDimmension(dimension);
     	
-    	return Response.status(200).entity("Powodzenie").build();
+    	return Response.status(200).entity("{\"status\":\"Success\"}").build();
     }
     
     

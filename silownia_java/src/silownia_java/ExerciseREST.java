@@ -76,7 +76,7 @@ public class ExerciseREST {
     public Response addFavourite(@QueryParam("userId") int uid,@QueryParam("exerciseId") int eid ) throws SQLException{
 		
 		ExerciseDAO.addToFavourite(uid, eid);
-		return Response.status(200).entity("Powodzenie").build();
+		return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 	
@@ -113,7 +113,7 @@ public class ExerciseREST {
 		
 		ExerciseDAO.addExercise(exercise);
 		
-		return Response.status(200).entity("Powodzenie").build();
+		return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 	

@@ -12,7 +12,7 @@
 		.controller('MarketController',MarketController);
 	
 	MarketController.$inject = ['$scope', '$location', '$http', 'UserService'];
-	function MarketController($scoper, $location, $http, UserService)
+	function MarketController($scope, $location, $http, UserService)
 	{
 		var vm = this;
 		vm.planes;
@@ -66,9 +66,11 @@
 			$http.post('./rest/plan/asignPlan',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
-				});
+				})
+				.error(function(){});
 			vm.mainPlans();
 			vm.search();
+			$scope.$apply();
 				
 		}
 		
@@ -95,7 +97,8 @@
 			$http.post('./rest/plan/removePlanFromUser',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
-				});
+				})
+				.error(function(){});
 			vm.mainPlans();
 			vm.search();
 		}
@@ -109,16 +112,15 @@
 		}
 		
 		function check(k){
+			vm.data[k].current_day = 0;
 			for(var i in vm.planes)
 				{
 					console.log("Porownuje "+vm.planes[i].training_plan_id+" z "+vm.data[k].training_plan_id);
 					if(vm.planes[i].training_plan_id == vm.data[k].training_plan_id)
-						{
-							vm.data[k].current_day = 1;
-							break;
-						}
-					else
-						vm.data[k].current_day = 0;
+					{
+						vm.data[k].current_day = 1;	
+						$scope.$apply;
+					}
 				}
 			}
 		

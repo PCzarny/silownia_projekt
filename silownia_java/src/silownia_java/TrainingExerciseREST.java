@@ -29,7 +29,7 @@ public class TrainingExerciseREST {
 
 		TrainingExerciseDAO.addExercises(exercises);
 	
-	    return Response.status(200).entity("Powodzenie").build();
+	    return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
 	
