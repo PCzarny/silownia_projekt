@@ -5,5 +5,5 @@ public class Constants {
     private static String dbName= "silownia";
     public static String dbUrl = "jdbc:mysql://localhost:3306/"+dbName;
     public static String dbUser = "root";
-    public static String dbPwd = "admin";
+    public static String dbPwd = "";
 }
