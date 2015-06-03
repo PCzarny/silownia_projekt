@@ -77,14 +77,14 @@
 			console.log(credencials);
 
 			$http.post('./rest/user/updateProfile', credencials)
-				.then(function(data, status) {
+				.success(function(data, status) {
 					console.log("Profil update success");
 					console.log(credencials);
-				});
-//			  	.error(function(data, status) {
-//				    console.log("Profil update error");
-//				    //$scope.errorMessage = 'Żądanie anulowano';
-//				  });
+				})
+			  	.error(function(data, status) {
+				    console.log("Profil update error");
+				    //$scope.errorMessage = 'Żądanie anulowano';
+				  });
 			console.log("Koniec")
 		};
 		

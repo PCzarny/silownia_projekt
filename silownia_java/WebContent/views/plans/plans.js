@@ -24,6 +24,7 @@
 		vm.add =add;
 		
 		$scope.errorMessage = false;
+		$scope.successMessage = false;
 		
 		vm.active();
 		

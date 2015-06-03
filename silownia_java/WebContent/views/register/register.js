@@ -40,23 +40,20 @@
 			}
 			
 			var credencials = ($(".form-register").serializeObject());
-			console.log("Wysylam do resta");
-			console.log(credencials);
 			credencials.userId = null;
 			credencials.create_on = null;
 			delete credencials["password-rep"];
-			console.log(credencials);
 
 
 			$http.post('./rest/user/registerUser', credencials)
 				.success(function(data, status) {
 					console.log("Poprawna rejestracja");
-//					//console.log(credencials);
-//					//$location.url('/login');
+					console.log(credencials);
+					$location.url('/login');
 				})
 			  	.error(function(data, status) {
-				    //console.log("Błąd rejestracji");
-//				    $scope.errorMessage = 'Błędna rejestracja';
+				    console.log("Błąd rejestracji");
+				    $scope.errorMessage = 'Błędna rejestracja';
 				  });
 		});
 	}

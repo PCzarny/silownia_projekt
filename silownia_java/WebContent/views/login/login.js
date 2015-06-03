@@ -45,18 +45,14 @@
 			
 			$http.post('./rest/login/auth', credencials)
 				.success(function(data, status) {
-					console.log("Odebralem");
-				    console.log(status);
-				    console.log(data);
+					console.log("Poprawne logowanie");
 				    UserService.setUser(data);
-				    console.log(AuthService.isAuthenticated());
 				    $rootScope.$broadcast('SetUser');
 					$location.url('/home');
 				})
 			  	.error(function(data, status) {
-				    console.log("Błąd");
-				    $scope.errorMessage = 'Wrong username or password';
-				    console.log(status);
+				    console.log("Błąd logowania");
+				    $scope.errorMessage = 'Nieprawidłowy login lub hasło';
 				  });
 		});
 		
