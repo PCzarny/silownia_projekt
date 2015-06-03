@@ -34,6 +34,8 @@ public class ExerciseREST {
 	}
 	
 	
+	
+	
 	@GET
     
     @Path("/UserExercises")
