@@ -68,17 +68,8 @@
 			$http.post('./rest/plan/asignPlan',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
-<<<<<<< HEAD
 					vm.mainPlans();
 				});
-=======
-				})
-				.error(function(){});
-			vm.mainPlans();
-			vm.search();
-			$scope.$apply();
->>>>>>> 9286a1adf2cd08a00a2198d18b9534c89b7fa779
-				
 		}
 		
 		function remove(butId){
@@ -104,16 +95,8 @@
 			$http.post('./rest/plan/removePlanFromUser',text)
 				.success(function(data,status,headers,config){
 					console.log("Udało się");
-<<<<<<< HEAD
 					vm.mainPlans();
 				});
-			
-=======
-				})
-				.error(function(){});
-			vm.mainPlans();
-			vm.search();
->>>>>>> 9286a1adf2cd08a00a2198d18b9534c89b7fa779
 		}
 		
 		function mainPlans(){
@@ -130,21 +113,12 @@
 		
 		function check(k){
 			vm.data[k].current_day = 0;
-			for(var i in vm.planes)
-				{
+			for(var i in vm.planes){
 					console.log("Porownuje "+vm.planes[i].training_plan_id+" z "+vm.data[k].training_plan_id);
-					if(vm.planes[i].training_plan_id == vm.data[k].training_plan_id)
-<<<<<<< HEAD
-						{
-							vm.data[k].current_day = 1;
-							break;
-						}
-=======
-					{
-						vm.data[k].current_day = 1;	
-						$scope.$apply;
+					if(vm.planes[i].training_plan_id == vm.data[k].training_plan_id){
+						vm.data[k].current_day = 1;
+						break;
 					}
->>>>>>> 9286a1adf2cd08a00a2198d18b9534c89b7fa779
 				}
 				console.log("Plan o id "+k+" jest w moich : "+vm.data[k].current_day);
 			}
@@ -173,10 +147,6 @@
 					}
 				console.log("Szukam planow z "+name+" w nazwie z kategorii "+cat);
 			})
-
-			
 		}
-		
 	}
-	
 })();
