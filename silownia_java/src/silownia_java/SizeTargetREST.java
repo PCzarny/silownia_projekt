@@ -55,7 +55,7 @@ public class SizeTargetREST {
     public Response addSizeTarget(SizeTarget sizeTarget) throws SQLException{
 		
 		SizeTargetDAO.addSizeTarget(sizeTarget);
-    	return Response.status(200).entity("Powodzenie").build();
+    	return Response.status(200).entity("{\"status\":\"Success\"}").build();
 
 	}
 	

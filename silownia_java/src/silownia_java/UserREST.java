@@ -48,7 +48,7 @@ public class UserREST {
 
 		UserDAO.updateProfile(user);
 		
-		return Response.status(200).entity("Powodzenie").build();
+		return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
     
@@ -63,7 +63,7 @@ public class UserREST {
 
 		UserDAO.registerUser(user);
 		
-		return Response.status(200).entity("Powodzenie").build();
+		return Response.status(200).entity("{\"status\":\"Success\"}").build();
 		
 	}
     
