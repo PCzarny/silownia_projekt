@@ -1,28 +1,37 @@
+<script src="jquery.js"></script>
+
+
+
 <div>
+	
 	<div ng-show="errorMessage" class="alert alert-danger" role="alert">
 		{{errorMessage}}
 	</div>
-	<button class="btn btn-success">
-		Moje æwiczenia
+	
+	<button id="user" class="btn btn-success"  ng-click="vm.getUserExercises()">
+		Moje cwiczenia
+	</button>
+	<button class="btn btn-success"  ng-click="vm.getFavouriteExercises()">
+		Ulubione cwiczenia
+	</button>
+	<button class="btn btn-success"  ng-click = "vm.getAllExercises()" >
+		Wszystkie cwiczenia
+	</button>
+	<button class="btn btn-success"  ng-click = "vm.addExercise()" >
+		Dodaj cwiczenie
 	</button>
 	
-	<button class="btn btn-success" ">
-		Ulubione æwiczenia
-	</button>
-	<button class="btn btn-success">
-		Wszystkie æwiczenia
-	</button>
 	
-	<div class="container">
-		<div class="col-md-12 table-responsive">
-				<table class="table table-bordered table-hover table-sortable" id="tab_logic">
+	<div class="content "  >
+		
+				 <table class="table table-hover table-striped">
 					<thead>
 						<tr >
 							<th class="text-center">
-								Nazwa æwiczenia
+								Nazwa cwiczenia
 							</th>
 							<th class="text-center">
-								Opis
+								Opis cwiczenia
 							</th>
 							
 	        				<th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
@@ -32,23 +41,83 @@
 					<tbody>
 						<tr ng-repeat="exercise in vm.data">
 							<td>{{exercise.name}}</td>
-							<td>{{exercise.description}}</td>
-							<td></td>
+							<td>{{exercise.desription}}</td>
+							<td class="remove" >
+                            	<button  class='btn btn-danger glyphicon glyphicon-remove row-remove' ng-show="{{vm.showDelete}}" 
+                            	 ></button>
+                            	<button class= 'btn btn-danger glyphicon glyphicon-star'  ng-click = "vm.addToFavourite(exercise.exercise_id)"></button>
+                        	</td>
 						</tr>
 					
 					
 					
 				</tbody>
 						
-					
-					
-				
+
 				
 				</table>
-		
-		
-		
-		</div>
+	
+	</div>
+	
+			
+	
+	<div class = "add"  >
+	
+				<form class="form-horizontal">
+			<fieldset>
+			
+			<!-- Form Name -->
+			<legend>Dodaj cwiczenie</legend>
+			
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="textinput">Nazwa</label>  
+			  <div class="col-md-4">
+			  <input id="textinput" name="name" type="text" placeholder="nazwa" class="form-control input-md" required="">
+			    
+			  </div>
+			</div>
+			
+			<!-- Textarea -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="textarea">Opis</label>
+			  <div class="col-md-4">                     
+			    <textarea class="form-control" id="textarea" name="desription"></textarea>
+			  </div>
+			</div>
+			
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="textinput">Adres URL</label>  
+			  <div class="col-md-4">
+			  <input id="textinput" name="url" type="text" placeholder="url" class="form-control input-md">
+			  <span class="help-block">Adres URL do filmu z cwiczeniem</span>  
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="selectbasic">Uprawnienia</label>
+			  <div class="col-md-4">
+			    <select id="selectbasic" name="permission" class="form-control">
+			      <option value="0">Prywatne</option>
+			      <option value="1">Publiczne</option>
+			    </select>
+			  </div>
+			</div>
+			
+			<!-- Button -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="singlebutton"></label>
+			  <div class="col-md-4">
+			    <button id="singlebutton" name="singlebutton" class="btn btn-success" ng-click="vm.add()">Dodaj cwiczenie</button>
+			  </div>
+			</div>
+			
+			</fieldset>
+			</form>
+	
+	
 	
 	</div>
 	

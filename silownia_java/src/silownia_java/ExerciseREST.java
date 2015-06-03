@@ -51,6 +51,36 @@ public class ExerciseREST {
 	
 	@GET
     
+    @Path("/AllExercises")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+    // Query parameters are parameters:
+	//http://localhost:8080/silownia_java/rest/exercise/UserExercises?userId=1
+    public ArrayList<Exercise> getAllExercise() throws SQLException{
+		
+		return ExerciseDAO.getAllExercise();
+		
+		
+	}
+	
+	
+	@GET
+    
+    @Path("/addFavourite")
+    // Produces JSON as response
+    @Produces(MediaType.APPLICATION_JSON) 
+    // Query parameters are parameters:
+	//http://localhost:8080/silownia_java/rest/exercise/UserExercises?userId=1
+    public Response addFavourite(@QueryParam("userId") int uid,@QueryParam("exerciseId") int eid ) throws SQLException{
+		
+		ExerciseDAO.addToFavourite(uid, eid);
+		return Response.status(200).entity("Powodzenie").build();
+		
+	}
+	
+	
+	@GET
+    
     @Path("/Favourite")
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
@@ -58,10 +88,13 @@ public class ExerciseREST {
 	//http://localhost:8080/silownia_java/rest/exercise/UserExercises?userId=1
     public ArrayList<Exercise> getFavouriteExercise(@QueryParam("userId") int id) throws SQLException{
 		
-		return ExerciseDAO.geFavouriteExercise(id);
+		return ExerciseDAO.getFavouriteExercise(id);
 		
 		
 	}
+	
+	
+	
 	
 	
 	

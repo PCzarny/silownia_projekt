@@ -56,7 +56,7 @@ public class ExerciseDAO {
 		 return exercise;
 	}
 	
-public static ArrayList<Exercise> geFavouriteExercise(int uid) throws SQLException{
+public static ArrayList<Exercise> getFavouriteExercise(int uid) throws SQLException{
 		
 		Connection dbConn = null;
 		ArrayList<Exercise> exercises = new ArrayList<>();
@@ -102,6 +102,98 @@ public static ArrayList<Exercise> geFavouriteExercise(int uid) throws SQLExcepti
 		 return exercises;
 	}
 	
+
+public static void addToFavourite(int uid , int exercise_id) throws SQLException{
+	
+	Connection dbConn = null;
+	String sql = "INSERT INTO `silownia`.`favourite_exercise` (`user_id`, `exercise_id`) VALUES (?, ?)";
+
+     try {
+    	 try{
+    		 dbConn = DBConnection.createConnection();
+             System.out.println(dbConn);
+            } 
+    	 	catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+    	 	
+    	 	ps.setInt(1, uid);
+    	 	ps.setInt(2, exercise_id);
+    	 	
+    	 		
+    	 	ps.execute();
+    	 
+        } catch (SQLException sqle) {
+            try {
+				throw sqle;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            if (dbConn != null) {
+                dbConn.close();
+            }
+            throw e;
+        } finally {
+            if (dbConn != null) {
+                dbConn.close();
+            }
+        }		
+	
+}
+
+public static ArrayList<Exercise> getAllExercise() throws SQLException{
+	
+	Connection dbConn = null;
+	ArrayList<Exercise> exercises = new ArrayList<>();
+	Exercise exercise = null;
+	
+     try {
+    	 try{
+    		 dbConn = DBConnection.createConnection();
+             System.out.println(dbConn);
+            } 
+    	 	catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Statement stmt = dbConn.createStatement();
+            String query = "SELECT * FROM exercise";
+            System.out.println(query);
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+            	exercise = new Exercise(); 
+            	exercise.setExercise_id(rs.getInt(1));
+            	exercise.setName(rs.getString(2));
+            	exercise.setDesription(rs.getString(3));
+            	exercise.setUrl(rs.getString(4));
+            	exercise.setPermission(rs.getInt(5));
+            	exercise.setUser_id(rs.getInt(6));   
+            	exercises.add(exercise);
+            }
+        } catch (SQLException sqle) {
+            throw sqle;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            if (dbConn != null) {
+                dbConn.close();
+            }
+            throw e;
+        } finally {
+            if (dbConn != null) {
+                dbConn.close();
+            }
+        }
+	 
+	 return exercises;
+}
+
+
+
 	
 	public static ArrayList<Exercise> getUserExercise(int id) throws SQLException{
 		
