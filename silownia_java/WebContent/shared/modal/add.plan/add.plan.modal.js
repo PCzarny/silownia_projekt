@@ -2,39 +2,38 @@
 	'use strict';
 	
 	angular
-		.module('gym.profil')
-		.directive('profilEditModal', ProfilEditModal);
+		.module('gym.plans')
+		.directive('addPlanModule', AddPlanModal);
 		
-	function ProfilEditModal(){
+	function AddPlanModal(){
 		return{
 			restrict: 'E',
 			replace: 'true',
-			link: ProfilEditModalLinkFunction,
-			templateUrl: 'shared/modal/edit.profil/edit.profil.modal.html',
+			link: AddPlanModalLinkFunction,
+			templateUrl: 'shared/modal/add.plan/add.plan.modal.html',
             scope: {
                 modalData: '='
             },
-			controller: ProfilEditModalController,
+			controller: AddPlanModalController,
 			controllerAs: 'vm',
 			bindToControler: true
 		};
 	}
-	function ProfilEditModalLinkFunction($scope, $element, $attrs, $ctrl){		
-		$scope.$on('profil-modal', showModal );
+	function AddPlanModalLinkFunction($scope, $element, $attrs, $ctrl){		
+		$scope.$on('add-plan-modal', showModal );
 		
 		$element.on('hidden.bs.modal', function (e) {
 			$scope.vm.cancel();
-			console.log("profile edit modal - hidden");
+			console.log("add-plan-modal - hidden");
 		})
-		//$('#profile-save').on('click', $scope.vm.save());
 		
 		function showModal (event, args){
 			$scope.vm.getData( args );
 			$element.modal('show');
 		}
 	}
-	ProfilEditModalController.$inject = ['$scope', '$location', '$http']
-	function ProfilEditModalController($scope, $location, $http){
+	AddPlanModalController.$inject = ['$scope', '$location', '$http']
+	function AddPlanModalController($scope, $location, $http){
 		var vm = this;
 		vm.unsaved = {};
 		
@@ -46,12 +45,11 @@
 		
 		///////////////////////////
 		function initialize(){
-			console.log("Board modal - initialization");
+			console.log("add-plan-modal - initialization");
 		}
 		
 		function getData(args) {
-			console.log("Edit profile modal - get data");
-			vm.mode = args.mode;
+			console.log("add-plan-modal - get data");
 			vm.data = args.data;
 		}
 		
@@ -64,23 +62,29 @@
 
 		function save(){
 			
-			var credencials = ($(".update-form").serializeObject());
-			console.log("Profil update data");
+			var credencials = ($(".update-plan-form").serializeObject());
+			console.log("Plan adde data");
 			console.log(credencials);
-			credencials.userId = vm.data.userId;
-			credencials.login = vm.data.login;
-			credencials.create_on = vm.data.create_on;
+			
+			credencials.trainingDays = null;
+			credencials.start_time = null;
+			credencials.is_active = null;
+			credencials.current_day = null;
+			credencials.period = 0;
+			credencials.user_id = vm.data.userId;
+			credencials.training_plan_id = null;
+			credencials.category_id = vm.data.userId;
 			console.log(credencials);
 
 			$http.post('./rest/user/updateProfile', credencials)
-				.success(function(data, status) {
+				.then(function(data, status) {
 					console.log("Profil update success");
 					console.log(credencials);
-				})
-			  	.error(function(data, status) {
-				    console.log("Profil update error");
-				    //$scope.errorMessage = 'Żądanie anulowano';
-				  });
+				});
+//			  	.error(function(data, status) {
+//				    console.log("Profil update error");
+//				    //$scope.errorMessage = 'Żądanie anulowano';
+//				  });
 			console.log("Koniec")
 		};
 		
