@@ -22,17 +22,26 @@ public class UserTraining {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public Boolean getIsActive() {
+
+	
+	public int getIsActive() {
 		return isActive;
 	}
-	public void setIsActive(Boolean isActive) {
+	public void setIsActive(int isActive) {
 		this.isActive = isActive;
 	}
-	
+	public int getCurrentDay() {
+		return currentDay;
+	}
+	public void setCurrentDay(int currentDay) {
+		this.currentDay = currentDay;
+	}
+
 	int userId;
 	int trainingPlanId;
 	Date startDate;
-	Boolean isActive;
+	int isActive;
+	int currentDay;
 	
 	
 	

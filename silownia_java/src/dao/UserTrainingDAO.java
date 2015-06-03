@@ -3,10 +3,12 @@ package dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 
 import model.TrainingCategory;
 import model.TrainingPlan;
+import model.UserTraining;
 import silownia_java.DBConnection;
 
 public class UserTrainingDAO {
@@ -384,4 +386,69 @@ public class UserTrainingDAO {
 			 return categories;
 		}
 	
+	public static void addTrainingPlanToUser(UserTraining plan) throws SQLException{
+			
+			Connection dbConn = null;
+			String sql = "call add_training_to_user(?, ?, ?, ?, ?);";
+		     try {
+		    	 try{
+		    		 dbConn = DBConnection.createConnection();
+		             System.out.println(dbConn);
+		            } 
+		    	 	catch (Exception e) {
+		                // TODO Auto-generated catch block
+		                e.printStackTrace();
+		            }
+		    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+		    	 	ps.setInt(1, plan.getUserId());
+		    	 	ps.setInt(2, plan.getTrainingPlanId());
+		    	 	ps.setDate(3, plan.getStartDate());
+		    	 	ps.setInt(4, plan.getCurrentDay());
+		    	 	ps.setInt(5, plan.getIsActive());
+		    	 	ps.execute();
+		        } catch (SQLException sqle) {
+		            throw sqle;
+		        } catch (Exception e) {
+		            // TODO Auto-generated catch block
+		            if (dbConn != null) {
+		                dbConn.close();
+		            }
+		            throw e;
+		        } finally {
+		            if (dbConn != null) {
+		                dbConn.close();
+		            }
+		        }		
+		}	
+	public static void deleteTrainingPlanToUser(UserTraining plan) throws SQLException{
+		
+		Connection dbConn = null;
+		String sql = "DELETE  FROM `user_has_training_plan` WHERE user_user_id=? and training_plan_training_plan_id=?";
+	     try {
+	    	 try{
+	    		 dbConn = DBConnection.createConnection();
+	             System.out.println(dbConn);
+	            } 
+	    	 	catch (Exception e) {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+	            }
+	    	 	java.sql.PreparedStatement ps = dbConn.prepareStatement(sql);
+	    	 	ps.setInt(1, plan.getUserId());
+	    	 	ps.setInt(2, plan.getTrainingPlanId());
+	    	 	ps.execute();
+	        } catch (SQLException sqle) {
+	            throw sqle;
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	            throw e;
+	        } finally {
+	            if (dbConn != null) {
+	                dbConn.close();
+	            }
+	        }		
+	}	
 }
