@@ -1,11 +1,4 @@
-<div>
-	<div ng-show="errorMessage" class="alert alert-danger" role="alert">
-		{{errorMessage}}
-	</div>
-	<div ng-show="successMessage" class="alert alert-success" role="alert">
-		{{successMessage}}
-	</div>
-	
+<div>	
 	<button class="btn btn-success" ng-click="vm.active()">
 		Aktywne plany
 	</button>
@@ -13,11 +6,7 @@
 	<button class="btn btn-success" ng-click="vm.nonactive()">
 		Nieaktywne plany
 	</button>
-	
-	<button class="btn btn-success" ng-click="vm.search()">
-		Wyszukaj plany
-	</button>
-	
+		
 	<button class="btn btn-success" ng-click="vm.add()">
 		<span class="glyphicon glyphicon-plus"></span>Dodaj
 	</button>
@@ -50,5 +39,5 @@
 	        </tbody>
 	    </table>
 	</div>
-	<add-plan-module></add-plan-module>
+	<add-plan-modal></add-plan-modal>
 </div>

@@ -45,13 +45,13 @@
 			
 			$http.post('./rest/login/auth', credencials)
 				.success(function(data, status) {
-					console.log("Poprawne logowanie");
+					console.log("Login success");
 				    UserService.setUser(data);
 				    $rootScope.$broadcast('SetUser');
 					$location.url('/home');
 				})
 			  	.error(function(data, status) {
-				    console.log("Błąd logowania");
+				    console.log("Login error");
 				    $scope.errorMessage = 'Nieprawidłowy login lub hasło';
 				  });
 		});

@@ -11,8 +11,8 @@
 		}])
 		.controller('PlansController', PlansController);
 
-	PlansController.$inject = ['$scope', '$location', '$http', 'UserService'];
-	function PlansController($scope, $location, $http, UserService)
+	PlansController.$inject = ['$scope', '$rootScope', '$location', '$http', 'UserService'];
+	function PlansController($scope, $rootScope, $location, $http, UserService)
 	{
 		var vm = this;
 		vm.user = UserService.getUser();
@@ -53,8 +53,13 @@
 			$location.path("/plan/" + id);
 			console.log("plan" + id);
 		}
+		
 		function add(){
-			
+			console.log("ADD Plan");
+			$rootScope.$broadcast('add-plan-modal',{
+				data: vm.data,
+				mode: "edit"
+				});
 		}
 	}
 })();

@@ -19,50 +19,38 @@
 	
 	
 	<div class="content "  >
-		
-				 <table class="table table-hover table-striped">
-					<thead>
-						<tr >
-							<th class="text-center">
-								Nazwa cwiczenia
-							</th>
-							<th class="text-center">
-								Opis cwiczenia
-							</th>
-							<th class="text-center">
-								Dzialanie
-							</th>
-							
-	        				<th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="exercise in vm.data">
-							<td>{{exercise.name}}</td>
-							<td>{{exercise.desription}}</td>
-							<td class="remove" >
-                            	<button  class='btn btn-danger glyphicon glyphicon-remove row-remove' ng-show="{{vm.showDelete}}" 
-                            	 ></button>
-                            	<button class= 'btn btn-danger glyphicon glyphicon-star'  ng-click = "vm.addToFavourite(exercise.exercise_id)"></button>
-                        	</td>
-						</tr>
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr >
+					<th class="text-center">
+						Nazwa cwiczenia
+					</th>
+					<th class="text-center">
+						Opis cwiczenia
+					</th>
+					<th class="text-center">
+						Dzialanie
+					</th>
 					
-					
-					
-				</tbody>
-						
-
-				
-				</table>
-	
+	      				<th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="exercise in vm.data">
+					<td>{{exercise.name}}</td>
+					<td>{{exercise.desription}}</td>
+					<td class="remove" >
+	                         	<button  class='btn btn-danger glyphicon glyphicon-remove row-remove' ng-show="{{vm.showDelete}}" 
+	                         	 ></button>
+	                         	<button class= 'btn btn-danger glyphicon glyphicon-star'  ng-click = "vm.addToFavourite(exercise.exercise_id)"></button>
+	                     	</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	
-			
-	
 	<div class = "add"  >
-	
-				<form class="form-horizontal">
+		<form class="form-horizontal">
 			<fieldset>
 			
 			<!-- Form Name -->
@@ -70,11 +58,10 @@
 			
 			<!-- Text input-->
 			<div class="form-group">
-			  <label class="col-md-4 control-label" for="textinput">Nazwa</label>  
-			  <div class="col-md-4">
-			  <input id="textinput" name="name" type="text" placeholder="nazwa" class="form-control input-md" required="">
-			    
-			  </div>
+				<label class="col-md-4 control-label" for="textinput">Nazwa</label>  
+				<div class="col-md-4">
+			 		<input id="textinput" name="name" type="text" placeholder="nazwa" class="form-control input-md" required="">  
+				</div>
 			</div>
 			
 			<!-- Textarea -->

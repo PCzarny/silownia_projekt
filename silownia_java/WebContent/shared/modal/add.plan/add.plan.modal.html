@@ -12,11 +12,12 @@
 						<h4>Dane podstawowe</h4>
 						
 						<label>Nazwa</label>
-						<input type="text" class="form-control" name="name">
+						<input id = "planName" type="text" class="form-control" name="name">
 						
 						<label>Kategoria</label>
-						<select>
-							<option ng-repeat = "cat in vm.categories">{{cat.name}}</option>
+						<select id = "planCategory">
+							<option value="0"> -- nieprzypisany --</option>
+							<option ng-repeat = "cat in vm.categories" value="{{cat.id}}">{{cat.name}}</option>
 						</select>
 						
 						<hr/>

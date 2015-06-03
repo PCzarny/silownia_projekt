@@ -35,7 +35,7 @@
 		
 		$('#submit-button').on('click', function () {
 			if ( $('#input-password').val() !== $('#input-password-rep').val() ){
-				$scope.errorMessage = 'Wprowadzono różne hasła';
+				$scope.errorMessage = 'Wprowadzono rozne hasla';
 				return;
 			}
 			
@@ -47,13 +47,13 @@
 
 			$http.post('./rest/user/registerUser', credencials)
 				.success(function(data, status) {
-					console.log("Poprawna rejestracja");
+					console.log("Registration success");
 					console.log(credencials);
 					$location.url('/login');
 				})
 			  	.error(function(data, status) {
-				    console.log("Błąd rejestracji");
-				    $scope.errorMessage = 'Błędna rejestracja';
+				    console.log("Registration error");
+				    $scope.errorMessage = 'Bledna rejestracja';
 				  });
 		});
 	}
