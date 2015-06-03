@@ -1,25 +1,48 @@
 
-<div class = 'content'>
-	<div class = 'row'>
-		<div class = 'col-sm-3'>
-			<a href="#/profil/{{vm.user.id}}" role="button"><button class="btn btn-success">
-			<span class="glyphicon glyphicon-user"></span>Profil
-			</button></a>
-		</div>
-		<div class = 'col-sm-3'>
-			<a href="#/plans" role="button"><button class="btn btn-success">
-			<span class="glyphicon glyphicon-calendar"></span>Plany treningowe
-			</button></a>
-		</div>
-		<div class = 'col-sm-3'>
-			<a href="#/stat" role="button"><button class="btn btn-success">
-			<span class="glyphicon glyphicon-stats"></span>Statystyki
-			</button></a>
-		</div>
-		<div class = 'col-sm-3'>
-			<a href="#/exercises" role="button"><button class="btn btn-success">
-			<span class="glyphicon glyphicon-scale"></span>Cwiczenia
-			</button></a>
-		</div>
-	</div>
+<div class="row">
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="http://s10.postimg.org/y15ebd9ax/image.jpg" alt="...">
+      <div class="caption">
+        <!--  <p>Treœæ opisu zdjêcia</p>-->
+        <p><a href="#/profil/{{vm.user.id}}" role="button"><button class="btn btn-success btn-block">
+			<span class="glyphicon glyphicon-user"></span> <h>Dostosuj profil uzytkownika</h>
+			</button></a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="http://s17.postimg.org/6w3buw64v/paper_606649_640.jpg" alt="...">
+      <div class="caption">
+        <p><a href="#/plans" role="button"><button class="btn btn-success btn-block">
+			<span class="glyphicon glyphicon-calendar"></span> <h>Zorganizuj swoje treningi</h>
+			</button></a></p>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="row">
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="http://s21.postimg.org/wepa6czx3/biegacz.jpg" alt="...">
+      <div class="caption">
+        <!--  <p>Treœæ opisu zdjêcia</p>-->
+        <p><a href="#/exercises" role="button"><button class="btn btn-success btn-block">
+			<span class="glyphicon glyphicon-fire"></span> <h>Dobierz odpowiednie cwiczenia</h>
+			</button></a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="http://s15.postimg.org/y9ustu6cr/weightlifting_521470_640.jpg" alt="...">
+      <div class="caption">
+        <p><a href="#/market" role="button"><button class="btn btn-success btn-block">
+			<span class="glyphicon glyphicon-stats"></span> <h>Dobieraj oraz udostepniaj plany</h>
+			</button></a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
