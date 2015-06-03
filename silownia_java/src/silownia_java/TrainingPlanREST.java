@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response;
 
 import model.TrainingCategory;
 import model.TrainingPlan;
+import model.UserTraining;
 import dao.TrainingPlanDAO;
 import dao.UserTrainingDAO;
 
@@ -125,6 +126,36 @@ public class TrainingPlanREST {
 
 		TrainingPlanDAO.addTreningPlanRow(plan);
 	       return Response.status(200).entity("Powodzenie").build();
+		
+	}
+	
+	@POST
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/asignPlan")
+    // Consumes JSON
+    @Consumes(MediaType.APPLICATION_JSON) 
+    // Wywo³anie: http://localhost:8080/silownia_java/rest/plan/addPlanRow
+	//JSON format : {"trainingDays":null,"start_time":null,"is_active":null,"current_day":1,"period":2,"user_id":1,"training_plan_id":1,"owner":1,"name":null,"categoryId":0,"categoryName":null}
+    public Response asignPlanToUser(UserTraining plan) throws SQLException{
+		
+
+		UserTrainingDAO.addTrainingPlanToUser(plan);
+	    return Response.status(200).entity("Powodzenie").build();
+		
+	}
+	
+	@POST
+    // Path: http://localhost/<appln-folder-name>/rest/plan
+    @Path("/removePlanFromUser")
+    // Consumes JSON
+    @Consumes(MediaType.APPLICATION_JSON) 
+    // Wywo³anie: http://localhost:8080/silownia_java/rest/plan/addPlanRow
+	//JSON format : {"trainingDays":null,"start_time":null,"is_active":null,"current_day":1,"period":2,"user_id":1,"training_plan_id":1,"owner":1,"name":null,"categoryId":0,"categoryName":null}
+    public Response removePlanFromUser(UserTraining plan) throws SQLException{
+		
+
+		UserTrainingDAO.deleteTrainingPlanToUser(plan);
+	    return Response.status(200).entity("Powodzenie").build();
 		
 	}
 	

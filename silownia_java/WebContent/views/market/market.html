@@ -41,6 +41,7 @@
 	    			<th>Liczba dni</th>
 	    			<th>Tworca</th>
 	    			<th>&nbsp;</th>
+	    			<th>Dodaj/Usun</th>
 	    		</tr>
 	        </thead>
 	        <tbody>
@@ -51,7 +52,11 @@
 	    			<td>{{plan.owner}}</td>
 	    			<td><a href="#/plan/{{plan.training_plan_id}}">
 	    				<button class="btn btn-default btn-ms"><span class="glyphicon glyphicon glyphicon-arrow-right"></span></button>
-	    			</a></td>	    			
+	    			</a></td>	 
+	    			<td>
+	    				<button ng-hide={{plan.current_day}} id={{plan.training_plan_id}} ng-click="vm.asign(plan.training_plan_id)" class="btn btn-success btn-ms"><span class="glyphicon glyphicon-ok-sign"></span></button>
+	    				<button ng-show={{plan.current_day}} id={{plan.training_plan_id}} ng-click="vm.remove(plan.training_plan_id)" class="btn btn-danger btn-ms"><span class="glyphicon glyphicon-remove-sign"></span></button>
+	    			</td>   			
 		        </tr>
 	        </tbody>
 	    </table>
