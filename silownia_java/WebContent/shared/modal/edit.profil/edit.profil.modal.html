@@ -1,0 +1,42 @@
+<div class="editModal modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Edycja u¿ytkownika</h4>
+				</div>
+				
+				<form class="update-form" role= "form">
+				<div class="modal-body">
+						<h4>Dane podstawowe</h4>
+						<label>ID</label>
+						<input type="text" class="form-control" name="userId" value="{{vm.data.userId}}" disabled="disabled">
+						
+						<label>Login</label>
+						<input type="text" class="form-control" name="login" value="{{vm.data.login}}" disabled="disabled">
+						
+						<label>Imiê</label>
+						<input type="text" class="form-control" name="name" value="{{vm.data.name}}">
+						
+						<label>Nazwisko</label>
+						<input type="text" class="form-control" name="surname" value="{{vm.data.surname}}">
+						
+						<label>email</label>
+						<input type="text" class="form-control" name="email" value="{{vm.data.email}}">
+						
+						<label>Nowe has³o</label>
+						<input type="password" class="form-control" name="password">
+						
+						<label>Data utworzenia</label>
+						<input type="text" class="form-control" name="created_on" value="{{vm.data.create_on}}" disabled="disabled">
+						
+						<hr/>
+						
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" id = "profil-save" class="btn btn-success" ng-click="vm.save()">Save changes</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>

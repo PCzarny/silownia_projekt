@@ -5,11 +5,13 @@
 
 	<div class = 'content'>
 		    	
-        <div class="panel">
+        <div class="panel panel-success">
         	<div class="panel-heading">
-	        	<button class="btn" ng-click="vm.editUser()">
-	          		<span class="glyphicon glyphicon-pencil"></span>  Edit
+	        	<button class="btn btn-success btn-sm" ng-click="vm.editUser()">
+	          		<span class="glyphicon glyphicon-pencil"></span>&nbsp;Edytuj
 	        	</button>
+	        </div>
+	        <div class="panel-content">
             	<table width="400">
 			        <tr>
 			            <td><label>Login:</label></td>
@@ -34,5 +36,6 @@
 			    </table>	
 			</div>
 		</div>
-	</div> 
+	</div>
+	<profil-edit-modal></profil-edit-modal>
 </div>

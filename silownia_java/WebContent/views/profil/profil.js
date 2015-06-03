@@ -11,8 +11,8 @@
 		}])
 		.controller('ProfilController', ProfilController);
 
-	ProfilController.$inject = ['$scope', 'UserService', '$routeParams', '$http'];
-	function ProfilController($scope, UserService, $routeParams, $http) {
+	ProfilController.$inject = ['$scope', '$rootScope', 'UserService', '$routeParams', '$http'];
+	function ProfilController($scope, $rootScope, UserService, $routeParams, $http) {
 		
 		$scope.errorMessage = false;
 
@@ -33,6 +33,10 @@
 		
 		function editUser(){
 			console.log("Edit user " + vm.id)
+			$rootScope.$broadcast('profil-modal',{
+				data: vm.data,
+				mode: "edit"
+				});
 		}
 	}
 })();

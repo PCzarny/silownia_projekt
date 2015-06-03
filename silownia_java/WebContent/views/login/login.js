@@ -44,7 +44,7 @@
 			console.log(credencials);
 			
 			$http.post('./rest/login/auth', credencials)
-				.success(function(data, status, headers, config) {
+				.success(function(data, status) {
 					console.log("Odebralem");
 				    console.log(status);
 				    console.log(data);
@@ -53,7 +53,7 @@
 				    $rootScope.$broadcast('SetUser');
 					$location.url('/home');
 				})
-			  	.error(function(data, status, headers, config) {
+			  	.error(function(data, status) {
 				    console.log("Błąd");
 				    $scope.errorMessage = 'Wrong username or password';
 				    console.log(status);

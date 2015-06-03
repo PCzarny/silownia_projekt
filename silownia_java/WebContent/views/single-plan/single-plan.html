@@ -23,7 +23,7 @@
 			        <tr>
 			            <td><label>D³ugoœæ:</label></td>
 			   			<td>{{vm.data.period}} dni</td>
-			   			<!--  {{vm.data.period == 1?dzieñ:dni}} -->
+			   			<td>{{vm.data.period==1?dzieñ:dni}}</td>
 			        </tr>
 			        <tr>
 			            <td><label>Twórca:</label></td>
@@ -48,7 +48,7 @@
 	
 			    <tbody ng-repeat="day in vm.data.trainingDays">
 			        <tr data-toggle="collapse" data-target="#demo{{$index}}" class="accordion-toggle">
-			            <td><button class="btn btn-default btn-ms"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+			            <td><button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-eye-open"></span></button></td>
 			           	<td>{{day.dayNr}}</td>
 			           	<td>{{day.exercises.length}}</td>
 			            <td><a href="#/training/{{day.id}}">Trenuj!</a></td>			

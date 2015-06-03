@@ -49,12 +49,12 @@
 
 
 			$http.post('./rest/user/registerUser', credencials)
-				.success(function(data, status, headers, config) {
+				.success(function(data, status) {
 					console.log("Poprawna rejestracja");
 //					//console.log(credencials);
 //					//$location.url('/login');
 				})
-			  	.error(function(data, status, headers, config) {
+			  	.error(function(data, status) {
 				    //console.log("Błąd rejestracji");
 //				    $scope.errorMessage = 'Błędna rejestracja';
 				  });
