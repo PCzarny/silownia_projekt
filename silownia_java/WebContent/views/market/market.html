@@ -32,7 +32,7 @@
 	
 
 	
-	<div class = 'content'>
+	<div class = 'content' id="main">
 	    <table class="table table-hover table-striped">
 	    	<thead>
 	    		<tr>
@@ -54,8 +54,8 @@
 	    				<button class="btn btn-default btn-ms"><span class="glyphicon glyphicon glyphicon-arrow-right"></span></button>
 	    			</a></td>	 
 	    			<td>
-	    				<button ng-hide={{plan.current_day}} id={{plan.training_plan_id}} ng-click="vm.asign(plan.training_plan_id)" class="btn btn-success btn-ms"><span class="glyphicon glyphicon-ok-sign"></span></button>
-	    				<button ng-show={{plan.current_day}} id={{plan.training_plan_id}} ng-click="vm.remove(plan.training_plan_id)" class="btn btn-danger btn-ms"><span class="glyphicon glyphicon-remove-sign"></span></button>
+	    				<button ng-hide="vm.data[$index].current_day" id={{plan.training_plan_id}} ng-click="vm.asign(plan.training_plan_id)" class="btn btn-success btn-ms"><span class="glyphicon glyphicon-ok-sign"></span></button>
+	    				<button ng-show="vm.data[$index].current_day" id={{plan.training_plan_id}} ng-click="vm.remove(plan.training_plan_id)" class="btn btn-danger btn-ms"><span class="glyphicon glyphicon-remove-sign"></span></button>
 	    			</td>   			
 		        </tr>
 	        </tbody>
