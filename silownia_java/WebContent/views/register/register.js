@@ -43,18 +43,28 @@
 			credencials.userId = null;
 			credencials.create_on = null;
 			delete credencials["password-rep"];
-
-
-			$http.post('./rest/user/registerUser', credencials)
-				.success(function(data, status) {
-					console.log("Registration success");
-					console.log(credencials);
+			
+			AuthService.register(credencials)
+				.success(function(data, status){
+					console.log("Registration function success");
 					$location.url('/login');
 				})
-			  	.error(function(data, status) {
-				    console.log("Registration error");
+				.error(function(data, status) {
+				    console.log("Registration function error");
 				    $scope.errorMessage = 'Bledna rejestracja';
 				  });
+
+
+//			$http.post('./rest/user/registerUser', credencials)
+//				.success(function(data, status) {
+//					console.log("Registration success");
+//					console.log(credencials);
+//					$location.url('/login');
+//				})
+//			  	.error(function(data, status) {
+//				    console.log("Registration error");
+//				    $scope.errorMessage = 'Bledna rejestracja';
+//				  });
 		});
 	}
 })();

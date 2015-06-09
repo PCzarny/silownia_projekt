@@ -16,7 +16,7 @@
 	</head>
 	<body ng-app='gym.project'>
 	<!--  BEGIN NAVBAR -->
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default" ng-controller="MainController as vm">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -31,7 +31,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav known">
+				<ul ng-show="vm.isAuth" class="nav navbar-nav known">
 					<li><a href="#/home">Home <span class="sr-only">(current)</span></a></li>
 					<li><a href="#/plans">Plan treningowy</a></li>
 					<li><a href="#/stat">Statystyki</a></li>
@@ -45,12 +45,12 @@
 			         </ul>
 			       </li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right unknown">
+				<ul ng-hide="vm.isAuth" class="nav navbar-nav navbar-right">
 					<li><a href="#/login">Zaloguj</a></li>
 					<li><a href="#/register">Zarejestruj</a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right known">
-					<li><a href="#/login">Wyloguj</a></li>
+				<ul ng-show="vm.isAuth" class="nav navbar-nav navbar-right">
+					<li><a ng-click="vm.logOut()" href="#/login">Wyloguj</a></li>
 				</ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->

@@ -11,14 +11,13 @@
 		}])
 		.controller('LoginController', LoginController);
 
-	LoginController.$inject = ['$scope', '$rootScope', 'AuthService', 'UserService', '$location', '$http'];
-	function LoginController($scope, $rootScope, AuthService, UserService, $location, $http) {
+	LoginController.$inject = ['$scope', 'AuthService', '$location'];
+	function LoginController($scope, AuthService, $location) {
 		
 		var vm = this;
 		
 		$scope.$on('$routeChangeSuccess', function () {
 			$scope.errorMessage = false;
-			UserService.setUser(undefined);
 		});
 		
 		$('#login-button').on('click', function () {
@@ -40,24 +39,22 @@
 			    return o;
 			};
 			var credencials = ($(".form-login").serializeObject());
-			console.log("Wysylam do resta");
+			console.log("Login data sending to server");
 			console.log(credencials);
 			
-			$http.post('./rest/login/auth', credencials)
+			AuthService.login(credencials)
 				.success(function(data, status) {
-					console.log("Login success");
-				    UserService.setUser(data);
-				    $rootScope.$broadcast('SetUser');
-					$location.url('/home');
+					console.log("Login function success");
+					$location.path('/home');
 				})
-			  	.error(function(data, status) {
-				    console.log("Login error");
-				    $scope.errorMessage = 'Nieprawidłowy login lub hasło';
-				  });
+				.error(function(data, status){
+					$scope.errorMessage = 'Nieprawidłowy login lub hasło';
+					console.log("Login function error");
+				});
 		});
 		
 		$('#register-button').on('click',function(){
-			$location.url('/register');
+			$location.path('/register');
 			$scope.$apply();
 			console.log('Redirect to register');
 		});

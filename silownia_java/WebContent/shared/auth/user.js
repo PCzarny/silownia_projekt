@@ -6,21 +6,9 @@
 			var user = {};
 
 			service.setUser = function (newUser) {
-				console.log(newUser);
-				console.log("cos doszlo");
 				user = newUser;
 				console.log(user);
-				$rootScope.$broadcast('SetUser');
-				
-				if(user){
-					$(document).find(".known").show();
-					$(document).find(".unknown").hide();
-				}
-				else{
-					$(document).find(".known").hide();
-					$(document).find(".unknown").show();
-				}
-					
+				$rootScope.$broadcast('SetUser');			
 			};
 
 			service.getUser = function () {
